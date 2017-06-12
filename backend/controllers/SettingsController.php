@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use common\models\Settings;
 use Yii;
 use yii\web\Controller;
 
@@ -17,7 +18,7 @@ class SettingsController extends Controller
      */
     public function actionIndex()
     {
-      Yii::$app->cache->flush([Yii::$app->settings->cache]);
+        Yii::$app->cache->flush([Yii::$app->settings->cache]);
         if(Yii::$app->request->isPost){
             $post = Yii::$app->request->post();
             foreach($post as $option => $value) {

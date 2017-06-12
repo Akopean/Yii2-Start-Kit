@@ -11,24 +11,13 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
+    'defaultRoute' => 'site',
+    //'layout' => 'no-auth',
     'modules' => [
-        // ID модуля должен обязательно быть "user", иначе модуль не загрузится.
         'user' => [
-            'class' => 'dektrium\user\Module',
-            'adminPermission' => 'admin',
-        ],
-        'users' => [
             'class' => 'mdm\admin\Module',
             'layout' => null,
-       /*     'controllerMap' => [
-                'user' => [
-                    'class' => null,
-                ],
-                'other' => [
-                    'class' => 'mdm\admin\controller',
-                ],
-            ],*/
-        ]
+        ],
     ],
     'as access' => [
         'class' => 'mdm\admin\components\AccessControl',
@@ -40,11 +29,11 @@ return [
             // Маршруты модуля пользователей.
             // Логин и так разрешён, но разлогиниться
             // без этой настройки и без настроенных ролей не получится.
-            'user/*',
-            'admin/*',
-            'site/*',
-            'users-admin/*',
-            'debug/*',
+           // 'user/*',
+           // 'admin/*',
+           // 'site/*',
+            //'users-admin/*',
+            //'debug/*',
         ]
     ],
     'components' => [
@@ -52,11 +41,11 @@ return [
             'baseUrl'=>'/admin',
             'csrfParam' => '_csrf-backend',
         ],
-       /* 'user' => [
+        'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
-        ],/*
+        ],
         'session' => [
             // this is the name of the session cookie used for login on the backend
             'name' => 'advanced-backend',
@@ -73,14 +62,19 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
+        'cache' => [
+            'class' => 'yii\caching\FileCache',
+            'cachePath' => '@backend/runtime/cache'
+        ],
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'enableStrictParsing' => false,
             'rules' => [
+                '<alias:index|login|logout>' => 'site/<alias>',
             ],
         ],
-        */
+
     ],
     'params' => $params,
 ];

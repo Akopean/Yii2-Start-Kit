@@ -20,13 +20,16 @@ $breadcrumbs = isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'
     </head>
     <?php $this->beginBody() ?>
     <body>
-    <!-- Header Starts -->
-    <?= $this->render('header'); ?>
-    <!-- Header Ends -->
+    <?php
+    //var_dump(Yii::$app->user->isGuest);exit;
+    if (!Yii::$app->user->isGuest) {
+       // <!-- Header Starts -->
+       echo $this->render('header');
 
-    <?= $this->render('sidebar'); ?>
-
-
+        //<!-- Header Ends -->
+       echo $this->render('sidebar');
+    }
+    ?>
 
     <!--content area start-->
     <div id="content" class="pmd-content content-area dashboard">

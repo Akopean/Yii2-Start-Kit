@@ -8,7 +8,6 @@ namespace common\models;
  *
  * @property integer $id
  * @property string $option_name
- * @property string $default_value
  * @property string $option_value
  */
 class Settings extends \yii\db\ActiveRecord
@@ -27,7 +26,7 @@ class Settings extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['value', 'default_value'], 'string'],
+            [['value'], 'string'],
             [['name'], 'string', 'max' => 200],
             [['name'], 'unique'],
         ];
@@ -41,7 +40,6 @@ class Settings extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Name',
-            'default_value' => 'Default Value',
             'value' => 'Value',
         ];
     }

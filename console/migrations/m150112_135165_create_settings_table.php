@@ -6,7 +6,7 @@ use yii\db\Migration;
 /**
  * Handles the creation of table `options`.
  */
-class m161108_111653_create_settings_table extends Migration
+class m150112_135165_create_settings_table extends Migration
 {
     public function up()
     {
@@ -20,10 +20,14 @@ class m161108_111653_create_settings_table extends Migration
             'id' => Schema::TYPE_PK,
             'name' => Schema::TYPE_STRING . '(200) NULL',
             'value' => Schema::TYPE_TEXT . ' NULL',
-            'default_value' => Schema::TYPE_TEXT . ' NULL',
         ], $tableOptions);
 
         $this->createIndex('idx_settings_name', '{{%settings}}', 'name', true);
+
+        if(Yii::$app->params['settings']) {
+            foreach (Yii::$app->params['settings'] as $key => $value)
+            $this->insert('{{%settings}}', ['name' => $key, 'value' => $value]);
+        }
     }
     public function down()
     {

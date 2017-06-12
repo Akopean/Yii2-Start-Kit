@@ -226,14 +226,21 @@ class SideNav extends Widget
         <!-- User info -->
         <li class="dropdown pmd-dropdown pmd-user-info visible-xs visible-md visible-sm visible-lg">
             <a aria-expanded="false" data-toggle="dropdown" class="btn-user dropdown-toggle media" data-sidebar="true" aria-expandedhref="javascript:void(0);">
-                <div class="media-left">
-                    <img src="/admin/themes/images/user-icon.png" alt="New User">
-                </div>
-                <div class="media-body media-middle">Propeller Admin</div>
-                <div class="media-right media-middle"><i class="dic-more-vert dic"></i></div>
+                 <div class="media-left">
+                      <img src="/admin/themes/images/user-icon.png" alt="New User">
+                 </div>
+                 <div class="media-body media-middle">Propeller Admin</div>
+                 <div class="media-right media-middle"><i class="dic-more-vert dic"></i></div>
             </a>
             <ul class="dropdown-menu">
-                <li><a href="login.html">Logout</a></li>
+            <li>
+                <form action="/admin/logout" method="post">
+                '. Html :: hiddenInput(\Yii :: $app->getRequest()->csrfParam, \Yii :: $app->getRequest()->getCsrfToken(), []) .'
+                    
+                        <button type="submit" class="btn pmd-ripple-effect btn-link color-white">Logout</button>
+                     
+                </form>
+                </li>
             </ul>
         </li><!-- End user info -->
        ');

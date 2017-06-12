@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <select id="timezone_string" name="timezone_string" aria-describedby="timezone-description" title="timezone">
                     <optgroup label="Ручные смещения">
                         <? for($i = 0; $i < 14; $i += 0.5): ?>
-                            <option <?= (Yii::$app->settings->get('timezone_string') === 'UTC+'.$i) ? 'selected="selected"' : null ?> value="UTC+<?= $i ?>">UTC+<?= $i ?></option>
+                            <option <?= (Yii::$app->settings->get('timezone_string') === 'UTC+'.$i) ? 'selected = "selected"' : null ?> value="UTC+<?= $i ?>">UTC+<?= $i ?></option>
                         <? endfor; ?>
                     </optgroup>
                 </select>
@@ -66,29 +66,3 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php ActiveForm::end(); ?>
     </div>
 </div>
-<?php
-$script = <<< JS
-    $( document ).ready(function() {
-        var bigValueSlider = document.getElementById('slider-huge'),
-            bigValueSpan = document.getElementById('huge-value'),
-            bigValueInput = document.getElementById('posts_per_page');
-
-        noUiSlider.create(bigValueSlider, {
-            start: bigValueSlider.dataset.value,
-            step: 1,
-            format: wNumb({
-                decimals: 0
-            }),
-            range: {
-                min: 0,
-                max: 50
-            }
-        });
-
-        bigValueSlider.noUiSlider.on('update', function ( values, handle ) {
-            bigValueInput.value = bigValueSpan.innerHTML = values[handle];
-        });
-    });
-JS;
-$this->registerJs($script, yii\web\View::POS_READY);
-?>

@@ -21,20 +21,6 @@ $breadcrumbs = isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'
     <body class="skin-blue sidebar-mini">
     <div class="wrapper">
         <div class="container">
-            <?= $this->render('header'); ?>
-            <?= $this->render('sidebar'); ?>
-            <div class="content-wrapper">
-                <section class="content-header">
-                    <h1><?= $this->title; ?></h1>
-                    <?=
-                    Breadcrumbs::widget([
-                        'tag' => 'ol',
-                        'encodeLabels' => false,
-                        'homeLink' => ['label' => '<i class="fa fa-dashboard"></i> Home/Dashboard', 'url' => ['/site/index']],
-                        'links' => $breadcrumbs,
-                    ])
-                    ?>
-                </section>
                 <section class="content">
                     <?= $content ?>
                 </section>

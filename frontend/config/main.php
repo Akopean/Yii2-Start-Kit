@@ -12,21 +12,17 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'modules' => [
-        'user' => [
-            'class' => 'dektrium\user\Module',
-            'admins' => ['MegaAdmin'], // Хардкод для админского пользователя. После настройки прав доступа, нужно удалить эту строку.
-        ],
     ],
     'components' => [
         'request' => [
             'baseUrl' => '',
             'csrfParam' => '_csrf-frontend',
         ],
-       /* 'user' => [
+        'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
-        ],*/
+        ],
         'session' => [
             // this is the name of the session cookie used for login on the frontend
             'name' => 'advanced-frontend',

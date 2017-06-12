@@ -122,3 +122,27 @@ a.desc:after {
 .dashboard {
     margin-top: 0;
 }
+
+.pmd-sidebar .pmd-sidebar-nav li .dropdown-menu li form {
+    padding-left: 65px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: transparent;
+}
+
+.btn.color-white{
+    color: white;
+}
+
+
+.pmd-sidebar .pmd-sidebar-nav li .dropdown-menu li button:hover,
+.pmd-sidebar .pmd-sidebar-nav li .dropdown-menu li button:focus,
+.pmd-sidebar .pmd-sidebar-nav li .dropdown-menu li button.active {
+    opacity: 1;
+    color: #fff;
+}
+
+.pmd-sidebar .btn-link:hover,.pmd-sidebar .btn-link:focus {
+    text-decoration: none;
+    background-color: transparent;
+}

@@ -3,6 +3,7 @@
 namespace common\components;
 
 use common\models\Settings;
+use Yii;
 use yii\base\Exception;
 
 /**
@@ -13,27 +14,30 @@ use yii\base\Exception;
 class DbSettings extends \yii\base\Component
 {
     public $cache = 'db_settings';
-    public $cacheDuration = 0;
+    public $cacheDuration = 60000;
     public $cacheDependency = null;
     protected $data = [];
 
     public function init()
-    {      //We check up cache, set new data, if  there empty
-        if (( $items = \Yii::$app->cache->get($this->cache)) === false) {
+    {
+        //We check up cache, set new data, if  there empty
+        if (!$items = \Yii::$app->cache->get($this->cache)) {
             $items = Settings::find()->asArray()->all();
             \Yii::$app->cache->set($this->cache, $items, $this->cacheDuration, $this->cacheDependency);
         }
 
         foreach ($items as $item){
-            $data [$item['name']] = $item['value'];
-            $this->data[$item['name']] = $item['value'] === null ?  $item['default_value'] : $item['value'];
+            $data[$item['name']] = $item['value'];
+            $this->data[$item['name']] = $item['value'];
         }
+
         parent::init();
     }
 
   public function get($key)
     {
         if (array_key_exists($key, $this->data)){
+
             return $this->data[$key];
         } else {
             return false;

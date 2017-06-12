@@ -75,4 +75,17 @@ class LoginForm extends Model
 
         return $this->_user;
     }
+
+    /**
+     * Check user is Admin
+     *
+     * @return User|bool
+     */
+    public function isAdmin()
+    {
+        if (!Yii::$app->user->isGuest) {
+            return User::isAdmin($this->_user->username);
+        }
+        return false;
+    }
 }
