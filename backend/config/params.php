@@ -89,10 +89,10 @@ return [
             ],
         ],
         [
-            'label' => 'Settings',
-            'icon' => 'settings',
+            'label' => 'Page',
+            'icon' => 'content_copy',
             'icon-class' => 'media-left media-middle material-icons',
-            'url' => '/admin/settings',
+            'url' => '/admin/page',
             'linkOptions' => [
                 'class' => 'pmd-ripple-effect',
             ],
@@ -103,6 +103,16 @@ return [
             'icon' => 'menu',
             'icon-class' => 'media-left media-middle material-icons',
             'url' => '/admin/user/menu',
+            'linkOptions' => [
+                'class' => 'pmd-ripple-effect',
+            ],
+
+        ],
+        [
+            'label' => 'Settings',
+            'icon' => 'settings',
+            'icon-class' => 'media-left media-middle material-icons',
+            'url' => '/admin/settings',
             'linkOptions' => [
                 'class' => 'pmd-ripple-effect',
             ],

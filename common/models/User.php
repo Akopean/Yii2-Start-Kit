@@ -1,6 +1,7 @@
 <?php
 namespace common\models;
 
+use common\models\query\UserQuery;
 use Yii;
 use yii\helpers\Url;
 
@@ -42,5 +43,13 @@ class User extends \mdm\admin\models\User
             Yii::$app->user->logout();
             Yii::$app->getResponse()->redirect(Url::to(['login']));
         }
+    }
+
+    /**
+     * @return UserQuery
+     */
+    public static function find()
+    {
+        return new UserQuery(get_called_class());
     }
 }

@@ -18,8 +18,9 @@ class SettingsController extends Controller
      */
     public function actionIndex()
     {
-        Yii::$app->cache->flush([Yii::$app->settings->cache]);
+
         if(Yii::$app->request->isPost){
+            Yii::$app->cache->flush([Yii::$app->settings->cache]);
             $post = Yii::$app->request->post();
             foreach($post as $option => $value) {
 

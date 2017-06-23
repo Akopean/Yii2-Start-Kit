@@ -18,13 +18,18 @@
         "yiisoft/yii2": "~2.0.6",
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0",
+        "yiisoft/yii2-authclient": "^2.1.0",
         "mdmsoft/yii2-admin": "~2.0",
         "rmrevin/yii2-fontawesome": "~2.17",
         "bower-asset/html5shiv": "*",
         "bower-asset/respond": "*",
         "bower-asset/propeller": "*",
         "bower-asset/moment": "*",
-        "vova07/yii2-imperavi-widget": "*"
+        "vova07/yii2-imperavi-widget": "*",
+        "kartik-v/yii2-grid": "@dev",
+        "kartik-v/yii2-detail-view": "*",
+        "kartik-v/yii2-widgets": "*",
+        "creocoder/yii2-nested-sets": "^0.9.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
@@ -32,7 +37,9 @@
         "yiisoft/yii2-faker": "~2.0.0",
 
         "codeception/base": "^2.2.3",
-        "codeception/verify": "~0.3.1"
+        "codeception/verify": "~0.3.1",
+        "guzzlehttp/guzzle": "^6.2",
+        "flow/jsonpath": "^0.3.4"
     },
     "config": {
         "process-timeout": 1800
@@ -44,6 +51,9 @@
         }
     ],
     "scripts": {
-        "post-install-cmd": "php init --env=Development --overwrite=n"
+        "build": [
+            "npm i",
+            "npm run dev"
+        ]
     }
 }

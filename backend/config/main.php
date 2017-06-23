@@ -74,7 +74,29 @@ return [
                 '<alias:index|login|logout>' => 'site/<alias>',
             ],
         ],
-
+        'urlManagerFrontend' => [
+            'class' => 'yii\web\UrlManager',
+            'baseUrl' => '',
+           // 'hostInfo' => 'http://domain.ru',
+            'enablePrettyUrl' => true,
+            'enableStrictParsing' => true,
+            'showScriptName' => false,
+        ],
+        'i18n' => [
+            'translations' => [
+                'backend' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@backend/messages',
+                    'fileMap' => [
+                        'backend' => 'backend.php',
+                    ],
+                    'on missingTranslation' => ['common\components\TranslationEventHandler', 'handleMissingTranslation']
+                ],
+            ],
+        ],
+    ],
+    'aliases' => [
+        '@fronted_web' =>  Yii::getAlias('@frontend/web'),
     ],
     'params' => $params,
 ];

@@ -10,8 +10,12 @@ return [
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'defaultRoute' => 'site',
     'controllerNamespace' => 'frontend\controllers',
     'modules' => [
+        'page' => [
+            'class' => 'frontend\modules\page\PageModule',
+        ],
     ],
     'components' => [
         'request' => [
@@ -39,14 +43,31 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                //out static page
+                // '<view:\w+>' => 'site/page',
+                ['class' => 'common\components\PageUrlRule'],
+
+                //add dynamic page for default controller
+                '<alias:index|login|contact>' => 'site/<alias>',
+
+
+
+                '<controller:[\w-]+>' => '<controller>/index',
+                '<controller:[\w-]>/<id:\d+>' => '<controller>/view',
+                '<controller:[\w-]>/<id:\d+>/<action:[\w-]+>' => '<controller>/<action>',
+
+/*
+                '<modules:\w>/<controller:[\w-]+>' => '<modules>/</modules><controller>/index',
+                '<modules:\w>/<controller:[\w-]>/<id:\d+>' => '<modules>/<controller>/view',
+                '<modules:\w>/<controller:[\w-]>/<id:\d+>/<action:[\w-]+>' => '<modules>/<controller>/<action>',*/
             ],
         ],
-        */
+
     ],
     'params' => $params,
 ];

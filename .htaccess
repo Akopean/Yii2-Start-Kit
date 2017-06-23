@@ -1,14 +1,37 @@
-Options -Indexes
-Options FollowSymlinks
-RewriteEngine on
+# Mod_Autoindex
+<IfModule mod_autoindex.c>
+    # Запрещаем просмотр содержимого папок
+    Options -Indexes
+</IfModule>
 
-RewriteCond %{HTTP_HOST} ^www\.(.*)$
-RewriteRule ^(.*)$ http://%1/$1 [L,R=301]
+# Mod_Rewrite
+<IfModule mod_rewrite.c>
+    Options +FollowSymlinks
+    # Включаем mod_rewrite
+    RewriteEngine On
+    #IndexIgnore */*
 
-RewriteCond %{REQUEST_URI} ^/admin/$
-RewriteRule ^(admin)/$ /$1 [R=301,L]
-RewriteCond %{REQUEST_URI} ^/admin
-RewriteRule ^admin(/.+)?$ /backend/web/$1 [L,PT]
+    RewriteCond %{HTTP_HOST} ^www\.(.*)$
+    RewriteRule ^(.*)$ http://%1/$1 [L,R=301]
 
-RewriteCond %{REQUEST_URI} ^.*$
-RewriteRule ^(.*)$ /frontend/web/$1
+    # Перенаправляем admin на входной скрипт админки
+    RewriteCond %{REQUEST_URI} ^/admin
+    RewriteRule ^admin(/.+)?$ /backend/web/$1 [L,PT]
+
+    # Перенаправляем api на входной скрипт api
+    RewriteCond %{REQUEST_URI} ^/api
+    RewriteRule ^api(/.+)?$ /api/web/$1 [L,PT]
+
+
+    RewriteCond %{REQUEST_URI} ^.*$
+    RewriteRule ^(.*)$ /frontend/web/$1
+</IfModule>
+
+
+
+
+
+
+
+
+

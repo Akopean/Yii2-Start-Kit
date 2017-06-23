@@ -2,6 +2,7 @@
 namespace backend\controllers;
 
 use common\models\User;
+use vova07\imperavi\actions\GetAction;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
@@ -52,7 +53,7 @@ class SiteController extends Controller
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
-            ],
+            ]
         ];
     }
 
