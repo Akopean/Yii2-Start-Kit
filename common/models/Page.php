@@ -11,9 +11,6 @@ use yii\behaviors\SluggableBehavior;
  * This is the model class for table "page".
  *
  * @property integer $id
- * @property integer $root
- * @property integer $lft
- * @property integer $rgt
  * @property integer $level
  * @property integer $author_id
  * @property integer $parent_id
@@ -56,8 +53,8 @@ class Page extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-      //      [['root', 'lft', 'rgt', 'level', 'title', 'content', ], 'required'],
-            [['root', 'lft', 'rgt', 'level', 'author_id', 'parent_id', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['level', 'title', 'content', ], 'required'],
+            [['level', 'author_id', 'parent_id', 'status', 'created_at', 'updated_at'], 'integer'],
             [['content'], 'string'],
             ['title', 'trim'],
             ['slug', 'unique'],
@@ -79,9 +76,6 @@ class Page extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'root' => Yii::t('app', 'Root'),
-            'lft' => Yii::t('app', 'Lft'),
-            'rgt' => Yii::t('app', 'Rgt'),
             'level' => Yii::t('app', 'Level'),
             'author_id' => Yii::t('app', 'Author ID'),
             'parent_id' => Yii::t('app', 'Parent ID'),

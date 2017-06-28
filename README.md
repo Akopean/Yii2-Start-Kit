@@ -10,8 +10,10 @@ yii migrate --migrationPath=@yii/rbac/migrations
 
 Миграции для редактирования меню.
 yii migrate --migrationPath=@mdm/admin/migrations
-```
 
+Миграции для Yii2 file manager.
+yii migrate --migrationPath=vendor/pendalf89/yii2-filemanager/migrations
+```
 DIRECTORY STRUCTURE
 -------------------
 

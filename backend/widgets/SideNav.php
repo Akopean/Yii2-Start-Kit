@@ -7,91 +7,25 @@ use yii\base\InvalidConfigException;
 use yii\base\Widget;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
-use rmrevin\yii\fontawesome\FA;
 
 /**
- * Nav renders a nav HTML component.
- *
- * For example:
- *
- * ```php
- * echo Nav::widget([
- *     'items' => [
- *         [
- *             'label' => 'Home',
- *             'url' => ['site/index'],
- *             'linkOptions' => [...],
- *         ],
- *         [
- *             'label' => '',
- *             'icon' => 'envelope-o',
- *             'badge' => '4',
- *             'badgeColor' => 'red',
- *             'items' => [
- *                  ['label' => 'You have 4 messages', 'options' => ['class'=>'header']],
- *                  '<li class="divider"></li>',
- *                  '<li class="dropdown-header">Dropdown Header</li>',
- *                  ['label' => 'See all messages', 'url' => ['/mail/inbox'], 'options' => ['class'=>'footer']],
- *             ],
- *         ],
- *         [
- *             'label' => 'Login',
- *             'url' => ['site/login'],
- *             'visible' => Yii::$app->user->isGuest
- *         ],
- *     ],
- *     'options' => ['class' =>'nav-pills'], // set this to nav-tab to get tab-styled navigation
- * ]);
- * ```
- *
- * Note: Multilevel dropdowns beyond Level 1 are not supported in Bootstrap 3.
- *
- * @author Misbahul D Munir <misbahuldmunir@gmail.com>
- * @since 1.0
  */
 class SideNav extends Widget
 {
-    /**
-     * @var array list of items in the nav widget. Each array element represents a single
-     * menu item which can be either a string or an array with the following structure:
-     *
-     * - label: string, required, the nav item label.
-     * - url: optional, the item's URL. Defaults to "#".
-     * - visible: boolean, optional, whether this menu item is visible. Defaults to true.
-     * - linkOptions: array, optional, the HTML attributes of the item's link.
-     * - options: array, optional, the HTML attributes of the item container (LI).
-     * - active: boolean, optional, whether the item should be on active state or not.
-     * - dropDownOptions: array, optional, the HTML options that will passed to the [[Dropdown]] widget.
-     * - items: array|string, optional, the configuration array for creating a [[Dropdown]] widget,
-     *   or a string representing the dropdown menu. Note that Bootstrap does not support sub-dropdown menus.
-     *
-     * If a menu item is a string, it will be rendered directly without HTML encoding.
-     */
+    public $submenuTemplate = "\n<ul>\n{items}\n</ul>\n";
+
+    public $activateParents = false;
+
+    public $activateItems = true;
+
     public $items = [];
-    /**
-     * @var boolean whether the nav items labels should be HTML-encoded.
-     */
+
     public $encodeLabels = false;
 
-    /**
-     * @var string the route used to determine if a menu item is active or not.
-     * If not set, it will use the route of the current request.
-     * @see params
-     * @see isItemActive
-     */
     public $route;
-    /**
-     * @var array the parameters used to determine if a menu item is active or not.
-     * If not set, it will use `$_GET`.
-     * @see route
-     * @see isItemActive
-     */
+
     public $params;
-    /**
-     * @var string this property allows you to customize the HTML which is used to generate the drop down caret symbol,
-     * which is displayed next to the button text to indicate the drop down functionality.
-     * Defaults to `null` which means `<i class="fa fa-angle-left pull-right"></i>` will be used. To disable the caret, set this property to be an empty string.
-     */
+
     public $treeviewCaret;
 
     /**
@@ -111,8 +45,6 @@ class SideNav extends Widget
         if ($this->params === null) {
             $this->params = Yii::$app->request->getQueryParams();
         }
-
-        //Html::addCssClass($this->options, ['widget' => '']);
     }
     /**
      * Renders the widget.
@@ -120,6 +52,7 @@ class SideNav extends Widget
     public function run()
     {
         PropellerAsset::register($this->getView());
+
         return $this->renderItems($this->items, $this->options);
     }
 
@@ -130,22 +63,20 @@ class SideNav extends Widget
      * @param bool $child
      * @return string
      */
-    public function renderItems($items, $options, $child = false)
+    public function renderItems($items, $options = [], $child = false)
     {
         $lines = [];
-        foreach ($items as $item) {
+        foreach ($items as $i => $item) {
             if (isset($item['visible']) && !$item['visible']) {
+                unset($items[$i]);
                 continue;
             }
             $lines[] = $this->renderItem($item);
+        }
 
-        }
-        if(!$child){
-            $lines = $this->addUser($lines);
-        }
-        else {
+        if($child)
             $options['class'] = 'dropdown-menu';
-        }
+
         return Html::tag('ul', implode("\n", $lines), $options);
     }
     /**
@@ -160,7 +91,7 @@ class SideNav extends Widget
             return $item;
         }
         if (!isset($item['label']) && !isset($item['icon']) && !isset($item['icon-class'])) {
-            throw new InvalidConfigException("The 'label' option is required.");
+            throw new InvalidConfigException("The 'label, icon, icon-class' option is required.");
         }
 
         $encodeLabel = isset($item['encode']) ? $item['encode'] : $this->encodeLabels;
@@ -170,9 +101,9 @@ class SideNav extends Widget
         }
 
         $icon = ArrayHelper::getValue($item, 'icon');
-        $icon_class = ArrayHelper::getValue($item, 'icon-class');
-        if ($icon && $icon_class) {
-            $label =   '<i class="' . $icon_class . '">' .$icon . '</i><span class="media-body">' . $label . '</span>';
+        $iconClass = ArrayHelper::getValue($item, 'iconClass');
+        if ($icon && $iconClass) {
+            $label =   '<i class="' . $iconClass . '">' .$icon . '</i><span class="media-body">' . $label . '</span>';
         }
 
         $badge = ArrayHelper::getValue($item, 'badge');
@@ -182,9 +113,17 @@ class SideNav extends Widget
 
         $options = ArrayHelper::getValue($item, 'options', []);
         $items = ArrayHelper::getValue($item, 'items');
-        $url = ArrayHelper::getValue($item, 'url', '#');
         $linkOptions = ArrayHelper::getValue($item, 'linkOptions', []);
+        $url = ArrayHelper::getValue($item, 'url', '#');
 
+        $url = (!isset($url) ? 'javascript:void(0)' : Yii::$app->request->baseUrl . $url);
+
+        if (isset($item['active'])) {
+            $active = ArrayHelper::remove($item, 'active', false);
+        } else {
+            $active = $this->isItemActive($item);
+
+        }
 
         if ($items !== null) {
             Html::addCssClass($options, ['widget' => 'dropdown pmd-dropdown']);
@@ -192,59 +131,75 @@ class SideNav extends Widget
                 $label .= ' ' . $this->treeviewCaret;
             }
             if (is_array($items)) {
-                    if($this->isChildActive($items)){
-                        Html::addCssClass($options, 'open');
-                    }
+                if ($this->activateItems) {
+                    $items = $this->isChildActive($items, $active);
+                }
                 $items = $this->renderItems($items, $options, true);
             }
+        }
+        if ($this->activateItems && $active) {
+
+            Html::addCssClass($options, 'open');
         }
 
         return Html::tag('li', Html::a($label, $url, $linkOptions) . $items, $options);
     }
+
     /**
      * Check to see if a child item is active optionally activating the parent.
-     * @param array $items
-     * @return bool
+     * @param array $items @see items
+     * @param boolean $active should the parent be active too
+     * @return array @see items
      */
-    protected function isChildActive($items)
+    protected function isChildActive($items, &$active)
     {
-
-       foreach ($items as $i ) {
-           if ( mb_strrpos ($i['url'], Yii::$app->controller->action->controller->uniqueId)) {
-             return true;
-           }
+        foreach ($items as $i => $child) {
+            if (ArrayHelper::remove($items[$i], 'active', false) || $this->isItemActive($child)) {
+                Html::addCssClass($options, 'open');
+                Html::addCssClass($items[$i]['options'], 'open');
+                if ($this->activateParents) {
+                    $active = true;
+                }
+            }
         }
-        return false;
+        return $items;
     }
 
     /**
-     * @param $lines
-     * @return array
+     * Checks whether a menu item is active.
+     * This is done by checking if [[route]] and [[params]] match that specified in the `url` option of the menu item.
+     * When the `url` option of a menu item is specified in terms of an array, its first element is treated
+     * as the route for the item and the rest of the elements are the associated parameters.
+     * Only when its route and parameters match [[route]] and [[params]], respectively, will a menu item
+     * be considered active.
+     * @param array $item the menu item to be checked
+     * @return boolean whether the menu item is active
      */
-    protected function addUser($lines) {
-       array_unshift($lines , '        
-        <!-- User info -->
-        <li class="dropdown pmd-dropdown pmd-user-info visible-xs visible-md visible-sm visible-lg">
-            <a aria-expanded="false" data-toggle="dropdown" class="btn-user dropdown-toggle media" data-sidebar="true" aria-expandedhref="javascript:void(0);">
-                 <div class="media-left">
-                      <img src="/admin/themes/images/user-icon.png" alt="New User">
-                 </div>
-                 <div class="media-body media-middle">Propeller Admin</div>
-                 <div class="media-right media-middle"><i class="dic-more-vert dic"></i></div>
-            </a>
-            <ul class="dropdown-menu">
-            <li>
-                <form action="/admin/logout" method="post">
-                '. Html :: hiddenInput(\Yii :: $app->getRequest()->csrfParam, \Yii :: $app->getRequest()->getCsrfToken(), []) .'
-                    
-                        <button type="submit" class="btn pmd-ripple-effect btn-link color-white">Logout</button>
-                     
-                </form>
-                </li>
-            </ul>
-        </li><!-- End user info -->
-       ');
+    protected function isItemActive($item)
+    {
 
-       return $lines;
+        if (isset($item['url']) && isset($item['url'][0])) {
+            $route = Yii::getAlias($item['url'][0]);
+
+            if ($route[0] !== '/' && Yii::$app->controller) {
+                $route = Yii::$app->controller->module->getUniqueId() . '/' . $route;
+            }
+            if (ltrim($route, '/') !== $this->route) {
+                return false;
+            }
+            unset($item['url']['#']);
+
+            if (count($item['url']) > 1) {
+                $params = $item['url'];
+                unset($params[0]);
+                foreach ($params as $name => $value) {
+                    if ($value !== null && (!isset($this->params[$name]) || $this->params[$name] != $value)) {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+        return false;
     }
 }

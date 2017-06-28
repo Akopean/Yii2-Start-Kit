@@ -11,14 +11,9 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
-    'defaultRoute' => 'site',
-    //'layout' => 'no-auth',
-    'modules' => [
-        'user' => [
-            'class' => 'mdm\admin\Module',
-            'layout' => null,
-        ],
-    ],
+    'defaultRoute' => 'site/index',
+    'sourceLanguage' => 'en',
+    'language' => 'en',
     'as access' => [
         'class' => 'mdm\admin\components\AccessControl',
         // Маршруты, открытые по умолчанию всегда.
@@ -91,6 +86,39 @@ return [
                         'backend' => 'backend.php',
                     ],
                     'on missingTranslation' => ['common\components\TranslationEventHandler', 'handleMissingTranslation']
+                ],
+            ],
+        ],
+    ],
+    'modules' => [
+        'user' => [
+            'class' => 'mdm\admin\Module',
+            'layout' => null,
+        ],
+        'filemanager' => [
+            'class' => 'pendalf89\filemanager\Module',
+            // Upload routes
+            'routes' => [
+                // Base absolute path to web directory
+                'baseUrl' => '',
+                // Base web directory url
+                'basePath' => '@frontend/web',
+                // Path for uploaded files in web directory
+                'uploadPath' => 'uploads',
+            ],
+            // Thumbnails info
+            'thumbs' => [
+                'small' => [
+                    'name' => 'Мелкий',
+                    'size' => [100, 100],
+                ],
+                'medium' => [
+                    'name' => 'Средний',
+                    'size' => [300, 200],
+                ],
+                'large' => [
+                    'name' => 'Большой',
+                    'size' => [500, 400],
                 ],
             ],
         ],

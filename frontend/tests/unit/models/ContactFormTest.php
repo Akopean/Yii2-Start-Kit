@@ -4,6 +4,10 @@ namespace frontend\tests\unit\models;
 use Yii;
 use frontend\models\ContactForm;
 
+/**
+ * @property  tester
+ * @property  tester
+ */
 class ContactFormTest extends \Codeception\Test\Unit
 {
     public function testSendEmail()

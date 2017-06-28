@@ -12,6 +12,7 @@ namespace common\models;
  */
 class Settings extends \yii\db\ActiveRecord
 {
+
     /**
      * @inheritdoc
      */

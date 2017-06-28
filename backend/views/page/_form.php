@@ -4,9 +4,8 @@ use common\models\Page;
 use mdm\admin\AutocompleteAsset;
 use yii\helpers\Html;
 use yii\helpers\Json;
-use yii\helpers\Url;
 use yii\widgets\ActiveForm;
-use vova07\imperavi\Widget as Imperavi;
+use pendalf89\filemanager\widgets\TinyMCE;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Page */
@@ -29,27 +28,24 @@ $this->registerJs($this->render('_script.js'));
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'level')->textInput(['maxlength' => true,  'type' => 'number', 'value' => $model->level === null ? 0 : $model->level]) ?>
+
     <?= $form->field($model, 'parent_name')->textInput(['id' => 'parent_name']) ?>
 
     <?= $model->isNewRecord ? '' : $form->field($model, 'slug')->textInput(['maxlength' => true]); ?>
 
-    <?= $form->field($model, 'content')->widget(
-        Imperavi::className(), [
-            'settings' => [
-                'minHeight' => 300,
-                'buttonSource' => true,
-                'pastePlainText' => true,
-                'imageUpload' => Url::to(['file/image-upload']),
-                'imageManagerJson' => Url::to(['file/images-get']),
-                'plugins' => [
-                    'clips',
-                    'table',
-                    'imagemanager',
-                    'fullscreen'
-                ]
-            ]
-        ]
-    )?>
+    <?= $form->field($model, 'content')->widget(TinyMCE::className(), [
+        'clientOptions' => [
+            'language' => Yii::$app->language === 'en' ? '' : Yii::$app->language,
+            'menubar' => false,
+            'height' => 300,
+            'image_dimensions' => false,
+            'plugins' => [
+                'advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code contextmenu table',
+            ],
+            'toolbar' => 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | code',
+        ],
+    ]); ?>
 
     <?= $form->field($model, 'status')->dropDownList([
         Page::STATUS_ACTIVE => 'Open',
