@@ -19,10 +19,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'responsive'=>true,
         'hover'=>true,
         'panel' => [
-            'heading'=>'<h3 class="panel-title"><i class="glyphicon glyphicon-duplicate"></i> Pages</h3>',
+            'heading'=>'<h3 class="panel-title"><i class="glyphicon glyphicon-duplicate"></i>' . Yii::t('backend', 'Pages') . '</h3>',
             'type'=>'success',
-            'before'=>Html::a('<i class="glyphicon glyphicon-plus"></i> Create Page', ['create'], ['class' => 'btn btn-success']),
-            'after'=>Html::a('<i class="glyphicon glyphicon-repeat"></i> Reset Grid', ['index'], ['class' => 'btn btn-info']),
+            'before'=>Html::a('<i class="glyphicon glyphicon-plus"></i> '.Yii::t('backend', 'Create Page'), ['create'], ['class' => 'btn btn-success']),
+            'after'=>Html::a('<i class="glyphicon glyphicon-repeat"></i> '.Yii::t('backend', 'Reset Grid'), ['index'], ['class' => 'btn btn-info']),
             'footer'=>false
         ],
         'columns' => [

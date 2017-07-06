@@ -29,7 +29,8 @@
         "kartik-v/yii2-detail-view": "*",
         "kartik-v/yii2-widgets": "*",
         "creocoder/yii2-nested-sets": "^0.9.0",
-        "pendalf89/yii2-filemanager": "*"
+        "pendalf89/yii2-filemanager": "*",
+        "codemix/yii2-localeurls": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

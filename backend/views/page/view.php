@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
     $attributes = [
         [
             'group'=>true,
-            'label'=>'SECTION 1: Identification Information',
+            'label'=> Yii::t('backend', 'SECTION 1: Identification Information'),
             'rowOptions'=>['class'=>'info']
         ],
         [
@@ -66,7 +66,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
         [
             'attribute'=>'status',
-            'label'=>'Available?',
+            'label'=> Yii::t('backend', 'Available?'),
             'format'=>'raw',
             'value'=>$model->status ? '<span class="label label-success">Yes</span>' : '<span class="label label-danger">No</span>',
             'type'=>DetailView::INPUT_SWITCH,
@@ -80,7 +80,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
         [
             'group'=>true,
-            'label'=>'SECTION 2: Content Information',
+            'label'=>Yii::t('backend', 'SECTION 2: Content Information'),
             'rowOptions'=>['class'=>'info']
         ],
         [

@@ -1,6 +1,10 @@
 # use mode rewrite for pretty URL support
 RewriteEngine on
 # if a directory or a file exists, use the request directly
+
+RewriteCond %{HTTP_HOST} ^yii2-start-kit-admin
+RewriteRule ^uploads/(.*)$ http://yii2-start-kit/uploads/$1 [R=301,L]
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 # otherwise forward the request to index.php

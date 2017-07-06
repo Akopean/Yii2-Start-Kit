@@ -41,7 +41,7 @@ class PageUrlRule extends Object implements UrlRuleInterface
         if (preg_match('#^([\w-]+)#i', $pathInfo, $matches)) {
             $pathsMap = $this->static_page->getPathsMap();
 
-            if ((bool)array_search($pathInfo, $pathsMap) === true) {
+            if (is_array($pathsMap) && (bool)array_search($pathInfo, $pathsMap) === true) {
                 return ['page/default/view', ['slug' => $pathInfo]];
             }
         }

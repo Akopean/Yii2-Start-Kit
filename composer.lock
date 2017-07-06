@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4758ebe0b04c4a613d8a8ff9af07a5af",
+    "content-hash": "d7a0c5ae1be7103328754d62e463c28e",
     "packages": [
         {
             "name": "2amigos/yii2-file-upload-widget",
@@ -480,6 +480,47 @@
                 "markdown-extra"
             ],
             "time": "2017-04-04 09:40:58"
+        },
+        {
+            "name": "codemix/yii2-localeurls",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/codemix/yii2-localeurls.git",
+                "reference": "6db663426cb204666170924fef4d2a0a1fb4c2eb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/codemix/yii2-localeurls/zipball/6db663426cb204666170924fef4d2a0a1fb4c2eb",
+                "reference": "6db663426cb204666170924fef4d2a0a1fb4c2eb",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "codemix\\localeurls\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Härtl",
+                    "email": "haertl.mike@gmail.com"
+                }
+            ],
+            "description": "Automatic locale/language management for URLs.",
+            "keywords": [
+                "i18n",
+                "locale",
+                "yii2"
+            ],
+            "time": "2017-05-12 06:21:43"
         },
         {
             "name": "creocoder/yii2-nested-sets",
@@ -5416,7 +5457,7 @@
                 "debugger",
                 "yii2"
             ],
-            "time": "2017-06-23T23:16:51+00:00"
+            "time": "2017-06-23 23:16:51"
         },
         {
             "name": "yiisoft/yii2-faker",
@@ -5522,7 +5563,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "kartik-v/yii2-grid": 20
+        "kartik-v/yii2-grid": 20,
+        "codemix/yii2-localeurls": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

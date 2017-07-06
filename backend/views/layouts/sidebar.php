@@ -137,6 +137,49 @@ $items  = [
 
     ],
     [
+        'label' => 'File Manager',
+        'icon' => 'attach_file',
+        'badge' => '2',
+        'visible' =>
+            Helper::checkRoute('/filemanager/file/index') ||
+            Helper::checkRoute('/filemanager/default/settings'),
+        'iconClass' => 'media-left media-middle material-icons',
+        'linkOptions' => [
+            'aria-expanded' => 'false',
+            'class' => 'btn-user dropdown-toggle media',
+            'data-toggle' => "dropdown",
+            'data-sidebar' => "true",
+        ],
+        'active' => in_array(Yii::$app->request->pathInfo, [
+            'filemanager/file/index',
+            'filemanager/default/settings',
+        ]),
+        'items' => [
+            [
+                'label' => 'Files',
+                'url' => '/filemanager/file/index',
+                'visible' => Helper::checkRoute('/filemanager/file/index'),
+                'linkOptions' => [
+                    'aria-expanded' => 'false',
+                    'class' => 'btn-user dropdown-toggle media',
+                    'data-toggle' => "dropdown",
+                    'data-sidebar' => "true",
+                ],
+            ],
+            [
+                'label' => 'Settings',
+                'url' => '/filemanager/default/settings',
+                'visible' => Helper::checkRoute('/filemanager/default/settings'),
+                'linkOptions' => [
+                    'aria-expanded' => 'false',
+                    'class' => 'btn-user dropdown-toggle media',
+                    'data-toggle' => "dropdown",
+                    'data-sidebar' => "true",
+                ],
+            ],
+        ],
+    ],
+    [
         'label' => 'Settings',
         'icon' => 'settings',
         'visible' => Helper::checkRoute('/settings/index'),
@@ -160,14 +203,14 @@ $items  = [
             <li class="dropdown pmd-dropdown pmd-user-info visible-xs visible-md visible-sm visible-lg">
                 <a aria-expanded="false" data-toggle="dropdown" class="btn-user dropdown-toggle media" data-sidebar="true">
                     <div class="media-left">
-                        <img src="/admin/themes/images/user-icon.png" alt="New User">
+                        <img src="/themes/images/user-icon.png" alt="New User">
                     </div>
                     <div class="media-body media-middle">Propeller <?= ucfirst(Yii::$app->user->identity->username)?></div>
                     <div class="media-right media-middle"><i class="dic-more-vert dic"></i></div>
                 </a>
                 <ul class="dropdown-menu">
                     <li>
-                        <form action="/admin/logout" method="post">
+                        <form action="<?= Yii::$app->urlManager->createUrl('logout') ?>" method="post">
                            <?=Html::hiddenInput(Yii::$app->getRequest()->csrfParam, Yii::$app->getRequest()->getCsrfToken(), []) ?>
                             <button type="submit" class="btn pmd-ripple-effect btn-link color-white">Logout</button>
                         </form>

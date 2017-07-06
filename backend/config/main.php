@@ -12,8 +12,7 @@ return [
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
     'defaultRoute' => 'site/index',
-    'sourceLanguage' => 'en',
-    'language' => 'en',
+    'language' => 'en-EN',
     'as access' => [
         'class' => 'mdm\admin\components\AccessControl',
         // Маршруты, открытые по умолчанию всегда.
@@ -33,7 +32,7 @@ return [
     ],
     'components' => [
         'request' => [
-            'baseUrl'=>'/admin',
+            'baseUrl'=>'',
             'csrfParam' => '_csrf-backend',
         ],
         'user' => [
@@ -71,22 +70,11 @@ return [
         ],
         'urlManagerFrontend' => [
             'class' => 'yii\web\UrlManager',
-            'baseUrl' => '',
-           // 'hostInfo' => 'http://domain.ru',
+            'baseUrl' => 'http://yii2-start-kit',
             'enablePrettyUrl' => true,
-            'enableStrictParsing' => true,
+            'enableStrictParsing' => false,
             'showScriptName' => false,
-        ],
-        'i18n' => [
-            'translations' => [
-                'backend' => [
-                    'class' => 'yii\i18n\PhpMessageSource',
-                    'basePath' => '@backend/messages',
-                    'fileMap' => [
-                        'backend' => 'backend.php',
-                    ],
-                    'on missingTranslation' => ['common\components\TranslationEventHandler', 'handleMissingTranslation']
-                ],
+            'rules' => [
             ],
         ],
     ],
@@ -98,6 +86,8 @@ return [
         'filemanager' => [
             'class' => 'pendalf89\filemanager\Module',
             // Upload routes
+            //Rename files if the name is already in use
+            'rename' => true,
             'routes' => [
                 // Base absolute path to web directory
                 'baseUrl' => '',

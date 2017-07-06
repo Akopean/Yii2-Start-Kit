@@ -118,3 +118,12 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+.menu_lang .dropdown-menu {
+    min-width: inherit;
+}
+
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+    background-color: #eee;
+    border-color: transparent;
+}

@@ -9,6 +9,8 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
+use frontend\widgets\Lang;
+use common\widgets\LanguageDropdown;
 
 AppAsset::register($this);
 ?>
@@ -28,38 +30,48 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'My Company',
+        'brandLabel' => Yii::t('frontend','My Company'),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
+
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
-        ['label' => 'Admin', 'url' => ['/admin']],
+        ['label' => Yii::t('frontend','Home'), 'url' => Yii::$app->urlManager->createUrl('/')],
+        ['label' => Yii::t('frontend','About'), 'url' => Yii::$app->urlManager->createUrl('/about')],
+        ['label' => Yii::t('frontend','Contact'), 'url' => Yii::$app->urlManager->createUrl('/contact')],
+        ['label' => Yii::t('frontend','Admin'), 'url' => 'http://yii2-start-kit-admin'],
     ];
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+        $menuItems[] = ['label' => Yii::t('frontend', 'Signup'), 'url' => Yii::$app->urlManager->createUrl('/signup')];
+        $menuItems[] = ['label' =>  Yii::t('frontend','Login'), 'url' => Yii::$app->urlManager->createUrl('/login')];
     } else {
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
+                Yii::t('frontend','Logout ({username})', ['username' => Yii::$app->user->identity->username ]),
                 ['class' => 'btn btn-link logout']
             )
             . Html::endForm()
             . '</li>';
     }
+    $menuItems[] =
+            '<li class="menu_lang">
+    <a class="btn btn-link" data-toggle="dropdown">
+        ' . ucfirst(mb_substr(Yii::$app->language, 0 , 2)) . ' ▼
+    </a>' .
+    LanguageDropdown::widget() .
+    '</li>'
+
+    ;
+   //Lang::widget();
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => $menuItems,
     ]);
     NavBar::end();
     ?>
-
     <div class="container">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],

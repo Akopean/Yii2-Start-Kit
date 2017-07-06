@@ -14,6 +14,9 @@ yii migrate --migrationPath=@mdm/admin/migrations
 Миграции для Yii2 file manager.
 yii migrate --migrationPath=vendor/pendalf89/yii2-filemanager/migrations
 ```
+```
+Run  yii message/extract @common/config/i18n.php to generate the translation files inside common/messages.
+```
 DIRECTORY STRUCTURE
 -------------------
 

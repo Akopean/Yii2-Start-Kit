@@ -11,6 +11,6 @@ class NpmAsset extends AssetBundle
 {
     public $sourcePath = '@npm/react/dist';
     public $js = [
-        'react.min.js',
+       // 'react.min.js',
     ];
 }

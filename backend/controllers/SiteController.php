@@ -5,6 +5,7 @@ use common\models\User;
 use vova07\imperavi\actions\GetAction;
 use Yii;
 use yii\filters\VerbFilter;
+use yii\helpers\Url;
 use yii\web\Controller;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
@@ -74,8 +75,8 @@ class SiteController extends Controller
      */
     public function actionTest()
     {
-
-       return "asd'";
+        $url = Url::to(['login']);
+       return "asd'".$url;
     }
 
 
@@ -93,7 +94,7 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login() && $model->isAdmin()) {
-            return $this->goHome();
+            return Yii::$app->getResponse()->redirect(Yii::$app->urlManager->createUrl(Yii::$app->getHomeUrl()));
         } else {
             return $this->render('login', [
                 'model' => $model,
@@ -110,6 +111,6 @@ class SiteController extends Controller
     {
         Yii::$app->user->logout();
 
-        return $this->goHome();
+        return Yii::$app->getResponse()->redirect(Yii::$app->urlManager->createUrl(Yii::$app->getHomeUrl()));
     }
 }

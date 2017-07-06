@@ -142,7 +142,7 @@ class SideNav extends Widget
             Html::addCssClass($options, 'open');
         }
 
-        return Html::tag('li', Html::a($label, $url, $linkOptions) . $items, $options);
+        return Html::tag('li', Html::a($label, Yii::$app->urlManager->createUrl($url), $linkOptions) . $items, $options);
     }
 
     /**

@@ -89,6 +89,8 @@ class Page extends \yii\db\ActiveRecord
             'meta_keywords' => Yii::t('app', 'Meta Keywords'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
+            'parent_name' => Yii::t('app', 'Parent Name'),
+            'date' => Yii::t('app', 'Date'),
         ];
     }
 

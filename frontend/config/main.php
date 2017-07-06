@@ -10,7 +10,8 @@ return [
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-    'defaultRoute' => 'site',
+    'defaultRoute' => 'site/index',
+    'language' => 'en-EN',
     'controllerNamespace' => 'frontend\controllers',
     'modules' => [
         'page' => [
@@ -53,7 +54,7 @@ return [
                 ['class' => 'common\components\PageUrlRule'],
 
                 //add dynamic page for default controller
-                '<alias:index|login|contact>' => 'site/<alias>',
+                '<alias:index|login|contact|signup|about>' => 'site/<alias>',
 
 
 

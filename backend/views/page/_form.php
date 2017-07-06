@@ -36,7 +36,7 @@ $this->registerJs($this->render('_script.js'));
 
     <?= $form->field($model, 'content')->widget(TinyMCE::className(), [
         'clientOptions' => [
-            'language' => Yii::$app->language === 'en' ? '' : Yii::$app->language,
+            'language' => Yii::$app->language === 'en-EN' ? '' : mb_substr(Yii::$app->language, 0, 2),
             'menubar' => false,
             'height' => 300,
             'image_dimensions' => false,

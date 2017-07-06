@@ -7,6 +7,7 @@ use yii\widgets\Breadcrumbs;
 backend\assets\PropellerAsset::register($this);
 \backend\assets\AppAsset::register($this);
 $breadcrumbs = isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [];
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
