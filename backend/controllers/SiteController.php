@@ -94,7 +94,7 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login() && $model->isAdmin()) {
-            return Yii::$app->getResponse()->redirect(Yii::$app->urlManager->createUrl(Yii::$app->getHomeUrl()));
+            return $this->goHome();
         } else {
             return $this->render('login', [
                 'model' => $model,
@@ -111,6 +111,6 @@ class SiteController extends Controller
     {
         Yii::$app->user->logout();
 
-        return Yii::$app->getResponse()->redirect(Yii::$app->urlManager->createUrl(Yii::$app->getHomeUrl()));
+        return $this->goHome();
     }
 }

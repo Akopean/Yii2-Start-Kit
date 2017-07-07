@@ -20,7 +20,7 @@ return [
     'About' => '',
     'Admin' => '',
     'Contact' => '',
-    'Home' => '',
+    'Home' => 'Главная',
     'Login' => '',
     'Logout ({username})' => '',
     'My Company' => '',

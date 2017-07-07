@@ -11,7 +11,6 @@ return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'defaultRoute' => 'site/index',
-    'language' => 'en-EN',
     'controllerNamespace' => 'frontend\controllers',
     'modules' => [
         'page' => [

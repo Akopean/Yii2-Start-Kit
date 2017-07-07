@@ -12,7 +12,6 @@ return [
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
     'defaultRoute' => 'site/index',
-    'language' => 'en-EN',
     'as access' => [
         'class' => 'mdm\admin\components\AccessControl',
         // Маршруты, открытые по умолчанию всегда.

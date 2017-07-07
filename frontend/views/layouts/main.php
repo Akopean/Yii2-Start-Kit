@@ -9,7 +9,6 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
-use frontend\widgets\Lang;
 use common\widgets\LanguageDropdown;
 
 AppAsset::register($this);
@@ -56,16 +55,13 @@ AppAsset::register($this);
             . Html::endForm()
             . '</li>';
     }
-    $menuItems[] =
-            '<li class="menu_lang">
-    <a class="btn btn-link" data-toggle="dropdown">
-        ' . ucfirst(mb_substr(Yii::$app->language, 0 , 2)) . ' ▼
-    </a>' .
-    LanguageDropdown::widget() .
-    '</li>'
-
-    ;
-   //Lang::widget();
+/*
+     //Language Menu Item
+        $menuItems[] = '<li class="menu_lang"><a class="btn btn-link" data-toggle="dropdown">'
+        . ucfirst(mb_substr(Yii::$app->language, 0 , 2)) . ' ▼ </a>'
+        . LanguageDropdown::widget()
+        . '</li>';
+*/
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => $menuItems,

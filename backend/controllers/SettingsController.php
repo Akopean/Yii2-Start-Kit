@@ -18,7 +18,7 @@ class SettingsController extends Controller
      */
     public function actionIndex()
     {
-
+//var_dump(Yii::$app->language);exit;
         if(Yii::$app->request->isPost){
             Yii::$app->cache->flush([Yii::$app->settings->cache]);
             $post = Yii::$app->request->post();

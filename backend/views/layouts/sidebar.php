@@ -8,7 +8,7 @@ use backend\widgets\SideNav;
 
 $items  = [
     [
-        'label' => 'Dashboard',
+        'label' => Yii::t('backend', 'Dashboard'),
         'icon' => 'dashboard',
         'iconClass' => 'media-left media-middle material-icons',
         'visible' => Helper::checkRoute('/'),
@@ -19,7 +19,7 @@ $items  = [
 
     ],
     [
-        'label' => 'User',
+        'label' => Yii::t('backend', 'User Manager'),
         'icon' => 'extension',
         'badge' => '4',
         'visible' =>
@@ -46,7 +46,7 @@ $items  = [
         ]),
         'items' => [
             [
-                'label' => 'All User',
+                'label' => Yii::t('backend', 'All User'),
                 'url' => '/user/user/index',
                 'visible' => Helper::checkRoute('/user/user'),
                 'linkOptions' => [
@@ -57,7 +57,7 @@ $items  = [
                 ],
             ],
             [
-                'label' => 'Permission',
+                'label' => Yii::t('backend', 'Permission'),
                 'url' => '/user/permission/index',
                 'visible' => Helper::checkRoute('/user/permission/index'),
                 'linkOptions' => [
@@ -68,7 +68,7 @@ $items  = [
                 ],
             ],
             [
-                'label' => 'Route',
+                'label' => Yii::t('backend', 'Route'),
                 'url' => '/user/route/index',
                 'visible' => Helper::checkRoute('/user/route/index'),
                 'linkOptions' => [
@@ -79,7 +79,7 @@ $items  = [
                 ],
             ],
             [
-                'label' => 'Rules',
+                'label' => Yii::t('backend', 'Rules'),
                 'url' => '/user/rule/index',
                 'visible' => Helper::checkRoute('/user/role/index'),
                 'linkOptions' => [
@@ -90,7 +90,7 @@ $items  = [
                 ],
             ],
             [
-                'label' => 'Assignments',
+                'label' => Yii::t('backend', 'Assignments'),
                 'url' => '/user/assignment/index',
                 'visible' => Helper::checkRoute('/user/assignment/index'),
                 'linkOptions' => [
@@ -101,7 +101,7 @@ $items  = [
                 ],
             ],
             [
-                'label' => 'Role',
+                'label' => Yii::t('backend', 'Role'),
                 'url' => '/user/role',
                 'visible' => Helper::checkRoute('/user/role/index'),
                 'linkOptions' => [
@@ -115,7 +115,7 @@ $items  = [
     ],
 
     [
-        'label' => 'Page',
+        'label' => Yii::t('backend', 'Pages'),
         'icon' => 'content_copy',
         'visible' => Helper::checkRoute('/page/index'),
         'iconClass' => 'media-left media-middle material-icons',
@@ -126,7 +126,7 @@ $items  = [
 
     ],
     [
-        'label' => 'Menu',
+        'label' => Yii::t('backend', 'Menu'),
         'icon' => 'menu',
         'visible' => Helper::checkRoute('/user/menu/index'),
         'iconClass' => 'media-left media-middle material-icons',
@@ -137,7 +137,7 @@ $items  = [
 
     ],
     [
-        'label' => 'File Manager',
+        'label' => Yii::t('backend', 'File Manager'),
         'icon' => 'attach_file',
         'badge' => '2',
         'visible' =>
@@ -156,7 +156,7 @@ $items  = [
         ]),
         'items' => [
             [
-                'label' => 'Files',
+                'label' => Yii::t('backend', 'Files'),
                 'url' => '/filemanager/file/index',
                 'visible' => Helper::checkRoute('/filemanager/file/index'),
                 'linkOptions' => [
@@ -167,7 +167,7 @@ $items  = [
                 ],
             ],
             [
-                'label' => 'Settings',
+                'label' => Yii::t('backend', 'Settings'),
                 'url' => '/filemanager/default/settings',
                 'visible' => Helper::checkRoute('/filemanager/default/settings'),
                 'linkOptions' => [
@@ -180,7 +180,7 @@ $items  = [
         ],
     ],
     [
-        'label' => 'Settings',
+        'label' => Yii::t('backend', 'Settings'),
         'icon' => 'settings',
         'visible' => Helper::checkRoute('/settings/index'),
         'iconClass' => 'media-left media-middle material-icons',

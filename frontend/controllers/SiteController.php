@@ -72,7 +72,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        var_dump(Yii::$app->language);exit;
+
         return $this->render('index');
     }
 
@@ -84,12 +84,12 @@ class SiteController extends Controller
     public function actionLogin()
     {
         if (!Yii::$app->user->isGuest) {
-            return Yii::$app->getResponse()->redirect(Yii::$app->urlManager->createUrl(Yii::$app->getHomeUrl()));
+            return $this->goHome();
         }
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return Yii::$app->getResponse()->redirect(Yii::$app->urlManager->createUrl(Yii::$app->getHomeUrl()));
+            return $this->goHome();
         } else {
             return $this->render('login', [
                 'model' => $model,
@@ -106,7 +106,7 @@ class SiteController extends Controller
     {
         Yii::$app->user->logout();
 
-        return Yii::$app->getResponse()->redirect(Yii::$app->urlManager->createUrl(Yii::$app->getHomeUrl()));
+        return $this->goHome();
     }
 
     /**
@@ -153,7 +153,7 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
                 if (Yii::$app->getUser()->login($user)) {
-                    return Yii::$app->getResponse()->redirect(Yii::$app->urlManager->createUrl(Yii::$app->getHomeUrl()));
+                    return $this->goHome();
                 }
             }
         }
@@ -175,7 +175,7 @@ class SiteController extends Controller
             if ($model->sendEmail()) {
                 Yii::$app->session->setFlash('success', 'Check your email for further instructions.');
 
-                return Yii::$app->getResponse()->redirect(Yii::$app->urlManager->createUrl(Yii::$app->getHomeUrl()));
+                return $this->goHome();
             } else {
                 Yii::$app->session->setFlash('error', 'Sorry, we are unable to reset password for the provided email address.');
             }
@@ -204,7 +204,7 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
             Yii::$app->session->setFlash('success', 'New password saved.');
 
-            return Yii::$app->getResponse()->redirect(Yii::$app->urlManager->createUrl(Yii::$app->getHomeUrl()));
+            return $this->goHome();
         }
 
         return $this->render('resetPassword', [

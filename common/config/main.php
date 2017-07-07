@@ -13,7 +13,6 @@ return [
         'singletons' => [
         ],
     ],
-  //  'bootstrap' => ['common\components\ThemeBootstrap'],
     'modules' => [
         'gridview' =>  [
             'class' => '\kartik\grid\Module'
@@ -25,9 +24,6 @@ return [
         ]
     ],
     'components' => [
-        'request' => [
-     //       'class' => 'common\components\LangRequest',
-        ],
         'static_page' => [ // для удобства мы задали псевдоним
             'class' =>  'common\components\StaticPage',
         ],
@@ -38,7 +34,7 @@ return [
             'class' => 'codemix\localeurls\UrlManager',
             // List all supported languages here
             // Make sure, you include your app's default language.
-            'languages' => ['en', 'ru', 'ua'],
+            'languages' => ['en' => 'en-EN'],// ['en' => 'en-EN', 'ru' => 'ru-RU', 'ua' => 'ua-UA']
 
 
           // 'class' => 'common\components\LangUrlManager',
