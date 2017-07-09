@@ -146,3 +146,56 @@ a.desc:after {
     text-decoration: none;
     background-color: transparent;
 }
+
+.breadcrumb {
+    margin: 20px 0 20px 0;
+}
+
+.panel {
+    position: relative;
+    padding-bottom: 15px;
+    margin-bottom: 22px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+
+.panel-heading {
+    position: relative;
+     padding: 0 15px;
+}
+
+.panel-title {
+    display: block;
+    padding: 20px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+.panel-heading+.panel-body {
+    padding-top: 0;
+}
+
+.panel-body {
+    padding: 15px;
+}
+
+.panel-actions {
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    z-index: 1;
+    margin: auto;
+    -webkit-transform: translate(0,-50%);
+    -ms-transform: translate(0,-50%);
+    -o-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+}
+
+
+
+.pmd-content .container-fluid {
+    max-width:  inherit;
+}

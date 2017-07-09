@@ -65,6 +65,10 @@ return [
             'enableStrictParsing' => false,
             'rules' => [
                 '<alias:index|login|logout>' => 'site/<alias>',
+                'settings/move-up/<id:\d+>' => 'settings/move-up',
+                'settings/move-down/<id:\d+>' => 'settings/move-down',
+                'settings/delete/<id:\d+>' => 'settings/delete',
+
             ],
         ],
         'urlManagerFrontend' => [

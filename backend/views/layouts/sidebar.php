@@ -102,7 +102,7 @@ $items  = [
             ],
             [
                 'label' => Yii::t('backend', 'Role'),
-                'url' => '/user/role',
+                'url' => '/user/role/index',
                 'visible' => Helper::checkRoute('/user/role/index'),
                 'linkOptions' => [
                     'aria-expanded' => 'false',

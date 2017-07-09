@@ -24,6 +24,8 @@
         "bower-asset/html5shiv": "*",
         "bower-asset/respond": "*",
         "bower-asset/propeller": "*",
+        "bower-asset/select2": "*",
+        "bower-asset/select2-bootstrap-theme": "*",
         "bower-asset/moment": "*",
         "kartik-v/yii2-grid": "@dev",
         "kartik-v/yii2-detail-view": "*",

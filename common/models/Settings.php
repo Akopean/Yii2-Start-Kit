@@ -2,17 +2,21 @@
 
 namespace common\models;
 
+use pendalf89\filemanager\behaviors\MediafileBehavior;
+use Yii;
 
 /**
- * This is the model class for table "options".
+ * This is the model class for table "settings".
  *
- * @property integer $id
- * @property string $option_name
- * @property string $option_value
+ * @property int $id
+ * @property string $name
+ * @property string $key
+ * @property string $value
+ * @property string $type
+ * @property int $order
  */
 class Settings extends \yii\db\ActiveRecord
 {
-
     /**
      * @inheritdoc
      */
@@ -27,9 +31,12 @@ class Settings extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['name', 'key', 'type'], 'required'],
             [['value'], 'string'],
-            [['name'], 'string', 'max' => 200],
-            [['name'], 'unique'],
+            [['order'], 'integer'],
+            ['value', 'safe'],
+            [['name', 'key', 'type'], 'string', 'max' => 255],
+            [['name', 'key'], 'unique'],
         ];
     }
 
@@ -39,9 +46,13 @@ class Settings extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'name' => 'Name',
-            'value' => 'Value',
+            'id' => Yii::t('app', 'ID'),
+            'name' => Yii::t('app', 'Name'),
+            'key' => Yii::t('app', 'Key'),
+            'value' => Yii::t('app', 'Value'),
+            'type' => Yii::t('app', 'Type'),
+            'order' => Yii::t('app', 'Order'),
         ];
     }
+
 }
