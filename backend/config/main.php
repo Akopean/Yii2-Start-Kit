@@ -68,6 +68,10 @@ return [
                 'settings/move-up/<id:\d+>' => 'settings/move-up',
                 'settings/move-down/<id:\d+>' => 'settings/move-down',
                 'settings/delete/<id:\d+>' => 'settings/delete',
+                'menu/<id:\d+>/item/<number:\d+>/delete' => 'menu/delete-item',
+                'menu/<id:\d+>/<alias>' => 'menu/<alias>',
+
+
 
             ],
         ],

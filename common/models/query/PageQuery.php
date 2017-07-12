@@ -11,6 +11,7 @@ class PageQuery extends ActiveQuery
     {
      return $this->andWhere(['status' => Page::STATUS_ACTIVE]);
     }
+
     /**
      * @param null $db
      * @return array|Page[]
@@ -19,6 +20,7 @@ class PageQuery extends ActiveQuery
     {
         return parent::all($db);
     }
+
     /**
      * @param null $db
      * @return array|null|Page

@@ -1,17 +1,12 @@
 <?php
 
-use common\models\Page;
-use mdm\admin\AutocompleteAsset;
-use yii\helpers\Html;
-use yii\helpers\Json;
 use yii\widgets\ActiveForm;
-use pendalf89\filemanager\widgets\TinyMCE;
+
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Page */
+/* @var $model common\models\Settings */
 /* @var $form yii\widgets\ActiveForm */
 
-AutocompleteAsset::register($this);
 
 
 ?>
@@ -25,7 +20,7 @@ AutocompleteAsset::register($this);
         <div class="col-md-4">
             <div class="form-group pmd-textfield pmd-textfield-floating-label">
                 <label for="Default" class="control-label"><?= Yii::t('backend', 'Setting name: Admin Title') ?></label>
-                <?= $form->field($model, 'name')->textInput(['maxlength' => true],['class' => 'form-control']) ?>
+                <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'class' => 'form-control']) ?>
                 <span class="pmd-textfield-focused"></span>
             </div>
         </div>
@@ -33,7 +28,7 @@ AutocompleteAsset::register($this);
             <div class="form-group pmd-textfield pmd-textfield-floating-label">
                 <label for="Default" class="control-label"><?= Yii::t('backend', 'Setting key: admin_title') ?></label>
 
-                <?= $form->field($model, 'key')->textInput(['maxlength' => true],['class' => 'form-control']) ?>
+                <?= $form->field($model, 'key')->textInput(['maxlength' => true, 'class' => 'form-control']) ?>
                 <span class="pmd-textfield-focused"></span>
             </div>
         </div>

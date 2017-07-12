@@ -137,6 +137,17 @@ $items  = [
 
     ],
     [
+        'label' => Yii::t('backend', 'Menu'),
+        'icon' => 'menu',
+        'visible' => Helper::checkRoute('/menu/index'),
+        'iconClass' => 'media-left media-middle material-icons',
+        'url' => 'menu',
+        'linkOptions' => [
+            'class' => 'pmd-ripple-effect',
+        ],
+
+    ],
+    [
         'label' => Yii::t('backend', 'File Manager'),
         'icon' => 'attach_file',
         'badge' => '2',
