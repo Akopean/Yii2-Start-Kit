@@ -1,5 +1,6 @@
 <?php
 
+use backend\widgets\MenuItem;
 use yii\bootstrap\ActiveForm;
 use yii\web\View;
 use yii\widgets\Breadcrumbs;
@@ -41,7 +42,7 @@ echo Breadcrumbs::widget(['links' => isset($this->params['breadcrumbs']) ? $this
                 <div class="panel panel-bordered">
                     <div class="panel-body">
                         <div class="dd">
-                            <?= \Yii::$app->view->renderFile('@backend/views/menu/menu-item.php',['menuItem' => $menuItem]) ?>
+                            <?= MenuItem::widget(['menuItem' => $menuItem]) ?>
                         </div>
                     </div>
                 </div>

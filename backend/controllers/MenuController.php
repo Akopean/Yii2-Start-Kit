@@ -5,6 +5,7 @@ namespace backend\controllers;
 
 
 use backend\models\search\MenusSearch;
+use common\models\AdjacencyList;
 use common\models\MenuItem;
 use common\models\Menus;
 use Yii;
@@ -45,15 +46,13 @@ class MenuController extends Controller
 
 
     /**
-     * Displays a single Menus model.
-     * @param integer $id
-     * @return mixed
+     * @param $id
+     * @return string
      */
     public function actionBuild($id)
     {
         $model = $this->findModel($id);
-        $menuItem = MenuItem::find()->select(['name','id','menu_id','order','url','parent_id'])->where(['menu_id' => $model->id, 'parent_id' => null])->orderBy(['order' => 'ASC','parent_id' => 'ASC'])->all();
-
+        $menuItem = MenuItem::find()->roots()->orderBy(['order' => 'ASC','parent_id' => 'ASC'])->all();
         return $this->render('build', [
             'model' => $model,
             'menuItem' => $menuItem
@@ -77,7 +76,6 @@ class MenuController extends Controller
      */
     private function orderMenu(array $menuItems, $parentId)
     {
-        $i = 0;
         foreach ($menuItems as $index => $menuItem) {
             $item = MenuItem::find()->where(['id' => $menuItem->id])->one();
             $item->order = $index + 1;

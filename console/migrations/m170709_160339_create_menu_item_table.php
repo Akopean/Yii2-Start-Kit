@@ -13,7 +13,12 @@ class m170709_160339_create_menu_item_table extends Migration
      */
     public function up()
     {
-        $this->createTable('menu_item', [
+        $tableOptions = null;
+        if ($this->db->driverName === 'mysql') {
+            // http://stackoverflow.com/questions/766809/whats-the-difference-between-utf8-general-ci-and-utf8-unicode-ci
+            $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
+        }
+        $this->createTable('{{%menu_item}}', [
             'id' => $this->primaryKey(),
             'menu_id' => $this->integer()->null(),
             'parent_id' => $this->integer()->unsigned()->null(),
@@ -25,11 +30,11 @@ class m170709_160339_create_menu_item_table extends Migration
             'order' => $this->integer()->defaultValue(1),
             'created_at' => $this->integer()->notNull(),
             'updated_at' => $this->integer()->notNull(),
+        ], $tableOptions);
 
-        ]);
         $this->addForeignKey('{{%token_unique}}','menu_item','menu_id','menus','id','CASCADE', 'RESTRICT');
 
-        $this->createIndex('{{%token_unique}}', 'menu_item', 'menu_id');
+        $this->createIndex('{{%token_unique}}', '{{%menu_item}}', ['parent_id', 'order']);
     }
 
     /**
@@ -37,6 +42,6 @@ class m170709_160339_create_menu_item_table extends Migration
      */
     public function down()
     {
-        $this->dropTable('menu_item');
+        $this->dropTable('{{%menu_item}}');
     }
 }

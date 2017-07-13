@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3f428991c8481eda57cb016828958686",
+    "content-hash": "7a296b30441211528298cc3e5d219e64",
     "packages": [
         {
             "name": "2amigos/yii2-file-upload-widget",
@@ -2223,6 +2223,97 @@
             "time": "2016-12-01 03:31:21"
         },
         {
+            "name": "paulzi/yii2-adjacency-list",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/paulzi/yii2-adjacency-list.git",
+                "reference": "da79542fd1070c2227780b1e606ed7ec4387db69"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/paulzi/yii2-adjacency-list/zipball/da79542fd1070c2227780b1e606ed7ec4387db69",
+                "reference": "da79542fd1070c2227780b1e606ed7ec4387db69",
+                "shasum": ""
+            },
+            "require": {
+                "paulzi/yii2-sortable": "~1.0",
+                "php": ">=5.4.0",
+                "yiisoft/yii2": "~2.0.0"
+            },
+            "require-dev": {
+                "phpunit/dbunit": "~1.0",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "paulzi\\adjacencyList\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PaulZi",
+                    "email": "pavel.zimakoff@gmail.com"
+                }
+            ],
+            "description": "Adjacency List Behavior for Yii2",
+            "keywords": [
+                "adjacency list",
+                "yii2"
+            ],
+            "time": "2017-04-03 07:36:05"
+        },
+        {
+            "name": "paulzi/yii2-sortable",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/paulzi/yii2-sortable.git",
+                "reference": "2d51e8a923acb4cc385e8d28faa0e8d179aa014e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/paulzi/yii2-sortable/zipball/2d51e8a923acb4cc385e8d28faa0e8d179aa014e",
+                "reference": "2d51e8a923acb4cc385e8d28faa0e8d179aa014e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "yiisoft/yii2": "~2.0.0"
+            },
+            "require-dev": {
+                "phpunit/dbunit": "~1.0",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "paulzi\\sortable\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PaulZi",
+                    "email": "pavel.zimakoff@gmail.com"
+                }
+            ],
+            "description": "Sortable Behavior for Yii2",
+            "keywords": [
+                "sortable",
+                "yii2"
+            ],
+            "time": "2016-08-31T10:37:13+00:00"
+        },
+        {
             "name": "pendalf89/yii2-filemanager",
             "version": "dev-master",
             "source": {
@@ -3020,7 +3111,7 @@
                 "functional testing",
                 "unit testing"
             ],
-            "time": "2017-07-10T20:30:59+00:00"
+            "time": "2017-07-10 20:30:59"
         },
         {
             "name": "codeception/verify",
@@ -4924,7 +5015,7 @@
             ],
             "description": "Symfony BrowserKit Component",
             "homepage": "https://symfony.com",
-            "time": "2017-07-12T13:09:21+00:00"
+            "time": "2017-07-12 13:09:21"
         },
         {
             "name": "symfony/console",
@@ -4994,7 +5085,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2017-07-12T09:59:19+00:00"
+            "time": "2017-07-12 09:59:19"
         },
         {
             "name": "symfony/css-selector",
@@ -5522,7 +5613,7 @@
                 "debugger",
                 "yii2"
             ],
-            "time": "2017-07-12T10:58:13+00:00"
+            "time": "2017-07-12 10:58:13"
         },
         {
             "name": "yiisoft/yii2-faker",
@@ -5629,7 +5720,8 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "kartik-v/yii2-grid": 20,
-        "codemix/yii2-localeurls": 20
+        "codemix/yii2-localeurls": 20,
+        "paulzi/yii2-adjacency-list": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
