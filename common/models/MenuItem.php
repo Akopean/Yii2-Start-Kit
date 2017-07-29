@@ -40,7 +40,7 @@ class MenuItem extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'order'], 'required'],
+            [['name'], 'required'],
             [['menu_id', 'parent_id', 'order', 'created_at', 'updated_at'], 'integer'],
             [['name', 'url', 'route', 'target', 'icon_class'], 'string', 'max' => 255],
             [['menu_id'], 'exist', 'skipOnError' => true, 'targetClass' => Menus::className(), 'targetAttribute' => ['menu_id' => 'id']],
@@ -59,12 +59,6 @@ class MenuItem extends \yii\db\ActiveRecord
                     ActiveRecord::EVENT_BEFORE_INSERT => array('created_at', 'updated_at'),
                     ActiveRecord::EVENT_BEFORE_UPDATE => array('updated_at'),
                 ),
-            ],
-            [
-                'class' => AdjacencyListBehavior::className(),
-                'sortable' => [
-                    'sortAttribute' => 'order',
-                ],
             ],
         ];
     }
@@ -100,17 +94,8 @@ class MenuItem extends \yii\db\ActiveRecord
     /**
      * @return array|ActiveRecord[]
      */
-   /* public function getChildren()
+    public function getChildren()
     {
         return MenuItem::find()->where(['parent_id' => $this->id])->all();
-    }*/
-
-    /**
-     * @inheritdoc
-     * @return \common\models\query\MenuItemQuery} the active query used by this AR class.
-     */
-    public static function find()
-    {
-        return new MenuItemQuery(get_called_class());
     }
 }

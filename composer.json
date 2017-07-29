@@ -34,7 +34,7 @@
         "creocoder/yii2-nested-sets": "^0.9.0",
         "pendalf89/yii2-filemanager": "*",
         "codemix/yii2-localeurls": "dev-master",
-        "paulzi/yii2-adjacency-list": "dev-master"
+        "mhndev/yii2-repository": "1.*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

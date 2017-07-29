@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 //use yii\grid\GridView;
 use kartik\grid\GridView;
+use yii\widgets\Breadcrumbs;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\search\PageSearch */
@@ -10,6 +11,8 @@ use kartik\grid\GridView;
 
 $this->title = Yii::t('backend', 'Pages');
 $this->params['breadcrumbs'][] = $this->title;
+
+echo Breadcrumbs::widget(['links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [], ]);
 ?>
 <div class="page-index">
 

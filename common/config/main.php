@@ -1,14 +1,19 @@
 <?php
+use yii\di\Instance;
+
 return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
+    'bootstrap' => [
+        'common\bootstrap\Bootstrap',
+    ],
     'language' => 'en-EN',
+    'sourceLanguage' => 'en-EN',
     'container' => [
         'definitions' => [
-
         ],
         'singletons' => [
         ],
@@ -34,9 +39,7 @@ return [
             'class' => 'codemix\localeurls\UrlManager',
             // List all supported languages here
             // Make sure, you include your app's default language.
-            'languages' => ['en' => 'en-EN'],// ['en' => 'en-EN', 'ru' => 'ru-RU', 'ua' => 'ua-UA']
-
-
+            'languages' => ['en' => 'en-EN', 'ru' => 'ru-RU'],// ['en' => 'en-EN', 'ru' => 'ru-RU', 'ua' => 'ua-UA']
           // 'class' => 'common\components\LangUrlManager',
             'enablePrettyUrl' => true,
             'showScriptName' => false,
@@ -57,13 +60,13 @@ return [
                 'backend*' => [
                     'class' => 'yii\i18n\PhpMessageSource',
                     'basePath' => '@common/messages',
+                //    'on missingTranslation' => ['common\components\TranslationEventHandler', 'handleMissingTranslation']
                 ],
                 'app*' => [
                     'class' => 'yii\i18n\PhpMessageSource',
                     'basePath' => '@common/messages',
-                ]
+                ],
             ],
-            'on missingTranslation' => ['common\components\TranslationEventHandler', 'handleMissingTranslation']
         ],
     ],
 ];

@@ -16,10 +16,6 @@ AutocompleteAsset::register($this);
 ?>
 <div class="col-md-12">
     <div class="panel panel-bordered">
-
-        <div class="panel-heading">
-            <h3 class="panel-title">Add New Menu</h3>
-        </div>
         <div class="page-form">
             <?php $form = ActiveForm::begin(); ?>
 

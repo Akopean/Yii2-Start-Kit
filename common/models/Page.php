@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use common\components\translatable\HasTranslations;
 use Yii;
 use yii\db\ActiveRecord;
 use common\models\query\PageQuery;
@@ -30,9 +31,12 @@ use yii\behaviors\SluggableBehavior;
  */
 class Page extends \yii\db\ActiveRecord
 {
+    use HasTranslations;
 
-    const STATUS_ACTIVE = 1;
-    const STATUS_INACTIVE = 0;
+    public $translatable = ['title'];
+
+    const STATUS_ACTIVE = 10;
+    const STATUS_INACTIVE = 1;
 
     public $date;
     public $parent_name;
@@ -129,7 +133,8 @@ class Page extends \yii\db\ActiveRecord
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {
-            if (!preg_match("%^/page%iu", $this->slug)) {
+           // var_dump(!preg_match("%^/page%iu", $this->slug), $this->slug);exit;
+            if (!preg_match("%^page%iu", $this->slug)) {
                 $this->slug = $this->prefix_slug . '/' . $this->slug;
             }
             return true;

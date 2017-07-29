@@ -4,7 +4,6 @@ namespace common\models;
 
 use pendalf89\filemanager\behaviors\MediafileBehavior;
 use Yii;
-
 /**
  * This is the model class for table "settings".
  *
@@ -32,7 +31,7 @@ class Settings extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'key', 'type'], 'required'],
-            [['value'], 'string'],
+            [['value', 'details'], 'string'],
             [['order'], 'integer'],
             ['value', 'safe'],
             [['name', 'key', 'type'], 'string', 'max' => 255],
@@ -40,6 +39,17 @@ class Settings extends \yii\db\ActiveRecord
         ];
     }
 
+
+
+    public function behaviors()
+    {
+        return [
+            'mediafile' => [
+                'class' => MediafileBehavior::className(),
+                'name' => 'key',
+            ]
+        ];
+    }
     /**
      * @inheritdoc
      */
@@ -49,10 +59,25 @@ class Settings extends \yii\db\ActiveRecord
             'id' => Yii::t('app', 'ID'),
             'name' => Yii::t('app', 'Name'),
             'key' => Yii::t('app', 'Key'),
+            'details' => Yii::t('app', 'Options'),
             'value' => Yii::t('app', 'Value'),
             'type' => Yii::t('app', 'Type'),
             'order' => Yii::t('app', 'Order'),
         ];
     }
 
+    /**
+     * @return bool
+     */
+    public function store(){
+        $lastSetting = Settings::find()->orderBy(['order' => SORT_DESC])->one();
+
+        if (is_null($lastSetting)) {
+            $this->order = 0;
+        } else {
+            $this->order = intval($lastSetting->order) + 1;
+        }
+
+        return $this->save();
+    }
 }

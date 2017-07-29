@@ -36,19 +36,19 @@ echo Breadcrumbs::widget(['links' => isset($this->params['breadcrumbs']) ? $this
                 'buttons' => [
                     'delete' => function ($url,$model,$key) {
                         return Html::a(
-                                '<i class="material-icons md-dark pmd-grid-icon">view_day</i> Builder',
+                                '<i class="material-icons md-dark pmd-grid-icon">view_day</i>' . Yii::t('backend', 'Build'),
                             Yii::$app->urlManager->createUrl('menu/'. $model->id .'/build'),
                             ['class' => 'btn-sm btn-success pull-right grid-button pmd-btn-raised pmd-ripple-effect']);
                     },
                     'update' => function ($url,$model,$key) {
                         return Html::a(
-                            '<i class="material-icons md-dark pmd-grid-icon">mode_edit</i> Update',
+                            '<i class="material-icons md-dark pmd-grid-icon">mode_edit</i>' . Yii::t('backend', 'Update'),
                             Yii::$app->urlManager->createUrl('menu/'. $model->id) . '/update',
                             ['class' => 'btn-sm btn-primary pull-right edit grid-button pmd-btn-raised pmd-ripple-effect']);
                     },
                     'link' => function ($url,$model,$key) {
                         return Html::a(
-                            '<i class="material-icons md-dark pmd-grid-icon">delete_forever</i> Delete',
+                            '<i class="material-icons md-dark pmd-grid-icon">delete_forever</i>' . Yii::t('backend', 'Delete'),
                             Yii::$app->urlManager->createUrl('menu/'. $model->id .'/delete'),
                             ['class' => 'btn-sm btn-danger pull-right delete grid-button pmd-btn-raised pmd-ripple-effect']);
                     }

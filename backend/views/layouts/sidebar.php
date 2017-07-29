@@ -3,7 +3,7 @@
 use mdm\admin\components\Helper;
 use yii\helpers\Html;
 use yii\web\View;
-use backend\widgets\SideNav;
+use backend\widgets\menu\SideNav;
 /* @var $this View */
 
 $items  = [
@@ -19,11 +19,10 @@ $items  = [
 
     ],
     [
-        'label' => Yii::t('backend', 'User Manager'),
+        'label' => Yii::t('backend', 'Roles'),
         'icon' => 'extension',
-        'badge' => '4',
+        'badge' => '5',
         'visible' =>
-            Helper::checkRoute('/user/user/index') ||
             Helper::checkRoute('/user/permission/index') ||
             Helper::checkRoute('/user/route/index') ||
             Helper::checkRoute('/user/role/index') ||
@@ -37,7 +36,6 @@ $items  = [
             'data-sidebar' => "true",
         ],
         'active' => in_array(Yii::$app->request->pathInfo, [
-            'user/user/index',
             'user/permission/index',
             'user/route/index',
             'user/rule/index',
@@ -45,17 +43,6 @@ $items  = [
             'user/role/index',
         ]),
         'items' => [
-            [
-                'label' => Yii::t('backend', 'All User'),
-                'url' => '/user/user/index',
-                'visible' => Helper::checkRoute('/user/user'),
-                'linkOptions' => [
-                    'aria-expanded' => 'false',
-                    'class' => 'btn-user dropdown-toggle media',
-                    'data-toggle' => "dropdown",
-                    'data-sidebar' => "true",
-                ],
-            ],
             [
                 'label' => Yii::t('backend', 'Permission'),
                 'url' => '/user/permission/index',
@@ -113,28 +100,58 @@ $items  = [
             ],
         ],
     ],
-
+    [
+        'label' => Yii::t('backend', 'User'),
+        'url' => '/user/user/index',
+        'icon' => 'person',
+        'visible' => Helper::checkRoute('/user/user'),
+        'iconClass' => 'media-left media-middle material-icons',
+        'linkOptions' => [
+            'class' => 'pmd-ripple-effect',
+        ],
+    ],
     [
         'label' => Yii::t('backend', 'Pages'),
         'icon' => 'content_copy',
-        'visible' => Helper::checkRoute('/page/index'),
+        'badge' => '2',
+        'visible' =>
+            Helper::checkRoute('/page/index') ||
+            Helper::checkRoute('/landing-page/index'),
         'iconClass' => 'media-left media-middle material-icons',
-        'url' => '/page',
         'linkOptions' => [
-            'class' => 'pmd-ripple-effect',
+            'aria-expanded' => 'false',
+            'class' => 'btn-user dropdown-toggle media',
+            'data-toggle' => "dropdown",
+            'data-sidebar' => "true",
         ],
-
-    ],
-    [
-        'label' => Yii::t('backend', 'Menu'),
-        'icon' => 'menu',
-        'visible' => Helper::checkRoute('/user/menu/index'),
-        'iconClass' => 'media-left media-middle material-icons',
-        'url' => '/user/menu',
-        'linkOptions' => [
-            'class' => 'pmd-ripple-effect',
+        'active' => in_array(Yii::$app->request->pathInfo, [
+            'page/index',
+            'landing-page/index',
+        ]),
+        'items' => [
+            [
+                'label' => Yii::t('backend', 'Static Page'),
+                'url' => '/page/index',
+                'visible' => Helper::checkRoute('/page/index'),
+                'linkOptions' => [
+                    'aria-expanded' => 'false',
+                    'class' => 'btn-user dropdown-toggle media',
+                    'data-toggle' => "dropdown",
+                    'data-sidebar' => "true",
+                ],
+            ],
+            [
+                'label' => Yii::t('backend', 'Langing Page'),
+                'url' => '/landing-page/index',
+                'visible' => Helper::checkRoute('/landing-page/index'),
+                'linkOptions' => [
+                    'aria-expanded' => 'false',
+                    'class' => 'btn-user dropdown-toggle media',
+                    'data-toggle' => "dropdown",
+                    'data-sidebar' => "true",
+                ],
+            ],
         ],
-
     ],
     [
         'label' => Yii::t('backend', 'Menu'),

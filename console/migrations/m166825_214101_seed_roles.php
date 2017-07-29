@@ -2,7 +2,7 @@
 
 use yii\db\Migration;
 
-class m166825_214101_roles extends Migration
+class m166825_214101_seed_roles extends Migration
 {
     public function up()
     {

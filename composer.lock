@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7a296b30441211528298cc3e5d219e64",
+    "content-hash": "6f118705abe649f3de748b25258080c0",
     "packages": [
         {
             "name": "2amigos/yii2-file-upload-widget",
@@ -2223,32 +2223,29 @@
             "time": "2016-12-01 03:31:21"
         },
         {
-            "name": "paulzi/yii2-adjacency-list",
-            "version": "dev-master",
+            "name": "mhndev/yii2-repository",
+            "version": "1.0.10",
             "source": {
                 "type": "git",
-                "url": "https://github.com/paulzi/yii2-adjacency-list.git",
-                "reference": "da79542fd1070c2227780b1e606ed7ec4387db69"
+                "url": "https://github.com/mhndev/yii2-repository.git",
+                "reference": "063c161c423cdb4e14fe6a7d8f6d3fdcebe3bde8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paulzi/yii2-adjacency-list/zipball/da79542fd1070c2227780b1e606ed7ec4387db69",
-                "reference": "da79542fd1070c2227780b1e606ed7ec4387db69",
+                "url": "https://api.github.com/repos/mhndev/yii2-repository/zipball/063c161c423cdb4e14fe6a7d8f6d3fdcebe3bde8",
+                "reference": "063c161c423cdb4e14fe6a7d8f6d3fdcebe3bde8",
                 "shasum": ""
             },
             "require": {
-                "paulzi/yii2-sortable": "~1.0",
-                "php": ">=5.4.0",
-                "yiisoft/yii2": "~2.0.0"
+                "yiisoft/yii2": "*"
             },
-            "require-dev": {
-                "phpunit/dbunit": "~1.0",
-                "phpunit/phpunit": "~4.0"
+            "suggest": {
+                "yiisoft/yii2-mongodb": "needed if you want to use mongodb as your dbms instead of relational dbms"
             },
-            "type": "yii2-extension",
+            "type": "library",
             "autoload": {
                 "psr-4": {
-                    "paulzi\\adjacencyList\\": ""
+                    "mhndev\\yii2Repository\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2257,61 +2254,17 @@
             ],
             "authors": [
                 {
-                    "name": "PaulZi",
-                    "email": "pavel.zimakoff@gmail.com"
+                    "name": "majid abdolhosseini",
+                    "email": "majid8911303@gmail.com"
                 }
             ],
-            "description": "Adjacency List Behavior for Yii2",
+            "description": "repository implementation in Yii2",
             "keywords": [
-                "adjacency list",
+                "design pattern",
+                "repository pattern",
                 "yii2"
             ],
-            "time": "2017-04-03 07:36:05"
-        },
-        {
-            "name": "paulzi/yii2-sortable",
-            "version": "v1.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/paulzi/yii2-sortable.git",
-                "reference": "2d51e8a923acb4cc385e8d28faa0e8d179aa014e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/paulzi/yii2-sortable/zipball/2d51e8a923acb4cc385e8d28faa0e8d179aa014e",
-                "reference": "2d51e8a923acb4cc385e8d28faa0e8d179aa014e",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0",
-                "yiisoft/yii2": "~2.0.0"
-            },
-            "require-dev": {
-                "phpunit/dbunit": "~1.0",
-                "phpunit/phpunit": "~4.0"
-            },
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-4": {
-                    "paulzi\\sortable\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PaulZi",
-                    "email": "pavel.zimakoff@gmail.com"
-                }
-            ],
-            "description": "Sortable Behavior for Yii2",
-            "keywords": [
-                "sortable",
-                "yii2"
-            ],
-            "time": "2016-08-31T10:37:13+00:00"
+            "time": "2017-02-24T13:07:29+00:00"
         },
         {
             "name": "pendalf89/yii2-filemanager",
@@ -3516,6 +3469,97 @@
                 "object graph"
             ],
             "time": "2017-04-12 18:52:22"
+        },
+        {
+            "name": "paulzi/yii2-adjacency-list",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/paulzi/yii2-adjacency-list.git",
+                "reference": "da79542fd1070c2227780b1e606ed7ec4387db69"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/paulzi/yii2-adjacency-list/zipball/da79542fd1070c2227780b1e606ed7ec4387db69",
+                "reference": "da79542fd1070c2227780b1e606ed7ec4387db69",
+                "shasum": ""
+            },
+            "require": {
+                "paulzi/yii2-sortable": "~1.0",
+                "php": ">=5.4.0",
+                "yiisoft/yii2": "~2.0.0"
+            },
+            "require-dev": {
+                "phpunit/dbunit": "~1.0",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "paulzi\\adjacencyList\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PaulZi",
+                    "email": "pavel.zimakoff@gmail.com"
+                }
+            ],
+            "description": "Adjacency List Behavior for Yii2",
+            "keywords": [
+                "adjacency list",
+                "yii2"
+            ],
+            "time": "2017-04-03 07:36:05"
+        },
+        {
+            "name": "paulzi/yii2-sortable",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/paulzi/yii2-sortable.git",
+                "reference": "2d51e8a923acb4cc385e8d28faa0e8d179aa014e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/paulzi/yii2-sortable/zipball/2d51e8a923acb4cc385e8d28faa0e8d179aa014e",
+                "reference": "2d51e8a923acb4cc385e8d28faa0e8d179aa014e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "yiisoft/yii2": "~2.0.0"
+            },
+            "require-dev": {
+                "phpunit/dbunit": "~1.0",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "paulzi\\sortable\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PaulZi",
+                    "email": "pavel.zimakoff@gmail.com"
+                }
+            ],
+            "description": "Sortable Behavior for Yii2",
+            "keywords": [
+                "sortable",
+                "yii2"
+            ],
+            "time": "2016-08-31T10:37:13+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -5720,8 +5764,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "kartik-v/yii2-grid": 20,
-        "codemix/yii2-localeurls": 20,
-        "paulzi/yii2-adjacency-list": 20
+        "codemix/yii2-localeurls": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

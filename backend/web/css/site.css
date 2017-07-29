@@ -162,6 +162,9 @@ a.desc:after {
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
 }
 
+.pmd-accordion .panel,.pmd-accordion .panel-title {
+    padding: 0;
+}
 .panel-heading {
     position: relative;
      padding: 0 15px;
@@ -215,3 +218,20 @@ a.desc:after {
      box-shadow: none;
 }
 
+[role="filemanager-frame"] {
+   padding-top: 20px;
+}
+
+.code-field{
+    white-space: pre-wrap;
+}
+
+.pmd-textfield textarea.form-control {
+     height: auto;
+}
+
+
+.modal.modal-danger .modal-header {
+    background-color: #FA2A00;
+    color: #FFF;
+}

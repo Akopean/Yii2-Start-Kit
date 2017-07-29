@@ -18,6 +18,7 @@ class DefaultController extends Controller
     public function actionView($slug)
     {
         $page = $this->loadModel($slug);
+
         return $this->render('view', [
             'page' => $page,
             ]

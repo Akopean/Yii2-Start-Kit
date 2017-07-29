@@ -60,18 +60,17 @@ return [
             'cachePath' => '@backend/runtime/cache'
         ],
         'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'enableStrictParsing' => false,
+            'class' => 'codemix\localeurls\UrlManager',
+            'ignoreLanguageUrlPatterns' => [
+                '#^menu/\d+/item/\d+/delete#' => '#^menu/delete-item#',
+            ],
             'rules' => [
                 '<alias:index|login|logout>' => 'site/<alias>',
                 'settings/move-up/<id:\d+>' => 'settings/move-up',
                 'settings/move-down/<id:\d+>' => 'settings/move-down',
-                'settings/delete/<id:\d+>' => 'settings/delete',
+                'settings/<id:\d+>/delete' => 'settings/delete',
                 'menu/<id:\d+>/item/<number:\d+>/delete' => 'menu/delete-item',
                 'menu/<id:\d+>/<alias>' => 'menu/<alias>',
-
-
 
             ],
         ],
@@ -103,6 +102,7 @@ return [
                 // Path for uploaded files in web directory
                 'uploadPath' => 'uploads',
             ],
+            'viewPath' => '@backend/views/filemanager',
             // Thumbnails info
             'thumbs' => [
                 'small' => [

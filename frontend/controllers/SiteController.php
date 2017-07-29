@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\Page;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
@@ -73,7 +74,17 @@ class SiteController extends Controller
     public function actionIndex()
     {
 
-        return $this->render('index');
+        $page = Page::findOne(11); // This is an Eloquent model
+        $page->level = 0;
+        $page
+            ->setTranslation('title', 'en', 'Name in EN')
+            ->setTranslation('title', 'nl', 'Naam in het Nederlands')
+            ->setTranslation('title', 'ru', 'Naam in het Rus')
+            ->save();
+
+      echo $page->getAttribute('title'); // returns 'Naam in het Nederlands'
+
+       // return $this->render('index');
     }
 
     /**

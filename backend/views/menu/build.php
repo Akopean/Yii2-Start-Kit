@@ -1,6 +1,6 @@
 <?php
 
-use backend\widgets\MenuItem;
+use backend\widgets\menu\MenuItem;
 use yii\bootstrap\ActiveForm;
 use yii\web\View;
 use yii\widgets\Breadcrumbs;
@@ -58,7 +58,7 @@ echo Breadcrumbs::widget(['links' => isset($this->params['breadcrumbs']) ? $this
                     <h3 class="modal-title"><?= Yii::t('backend', 'Delete this Menu item?') ?></h3>
                 </div>
                 <div class="modal-footer">
-                    <?php $form = ActiveForm::begin(['id' => 'delete_form', 'method' => 'post']); ?>
+                    <?php ActiveForm::begin(['id' => 'delete_form', 'method' => 'post']); ?>
                     <input type="submit" class="btn btn-danger pull-right delete-confirm"
                            value="<?= Yii::t('backend', 'Delete') ?>">
                     <button type="button" class="btn btn-default pull-right" data-dismiss="modal"><?= Yii::t('backend', 'Cancel') ?></button>
@@ -77,7 +77,7 @@ $this->registerJs("
          * Delete menu item
          */
         $('.item_actions').on('click', '.delete', function (e) {
-            var action = '/menu/" . $model->id . "/item/__id/delete';
+            var action = 'item/__id/delete';
             id = $(e.currentTarget).data('id');
             $('#delete_form')[0].action = action.replace('__id', id);
             $('#delete_modal').modal('show');

@@ -1,5 +1,5 @@
 <?php
-namespace backend\widgets;
+namespace backend\widgets\menu;
 
 use backend\assets\PropellerAsset;
 use Yii;
@@ -108,7 +108,7 @@ class MenuItem extends Widget
             ['class' => "dd-handle"]
         );
 
-        $items =  $item->getChildren()->all();
+        $items =  $item->children;
         if ($items !== null) {
             if (is_array($items)) {
                 $items = $this->renderItems($items);

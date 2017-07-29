@@ -32,9 +32,10 @@ class m170709_160339_create_menu_item_table extends Migration
             'updated_at' => $this->integer()->notNull(),
         ], $tableOptions);
 
-        $this->addForeignKey('{{%token_unique}}','menu_item','menu_id','menus','id','CASCADE', 'RESTRICT');
+        $this->addForeignKey('menu_item_menus_id','menu_item','menu_id','menus','id','CASCADE', 'RESTRICT');
 
-        $this->createIndex('{{%token_unique}}', '{{%menu_item}}', ['parent_id', 'order']);
+        $this->createIndex('idx_menu_item_order', '{{%menu_item}}', 'order');
+        $this->createIndex('idx_menu_item_parent_id', '{{%menu_item}}', 'parent_id');
     }
 
     /**

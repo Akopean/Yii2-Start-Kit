@@ -21,17 +21,14 @@ class m150112_135165_create_settings_table extends Migration
             'name' => Schema::TYPE_STRING . '(255) NOT NULL',
             'key' =>  Schema::TYPE_STRING . '(255) NOT NULL',
             'value' => Schema::TYPE_TEXT . ' NULL',
+            'details' => Schema::TYPE_TEXT . ' NULL',
             'type' => Schema::TYPE_STRING . '(255) NOT NULL',
             'order' => Schema::TYPE_SMALLINT. ' DEFAULT 1',
         ], $tableOptions);
 
         $this->createIndex('idx_settings_name', '{{%settings}}', 'name', true);
-
-       /* if(Yii::$app->params['settings']) {
-            foreach (Yii::$app->params['settings'] as $key => $value)
-            $this->insert('{{%settings}}', ['name' => $key, 'value' => $value]);
-        }*/
     }
+
     public function down()
     {
         $this->dropTable('{{%settings}}');

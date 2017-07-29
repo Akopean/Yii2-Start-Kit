@@ -127,3 +127,14 @@ a.desc:after {
     background-color: #eee;
     border-color: transparent;
 }
+
+
+
+#fileinfo img {
+    max-width: 100px;
+}
+
+.list-view {
+    float: none;
+    width: auto;
+}

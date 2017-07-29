@@ -2,7 +2,7 @@
 
 namespace common\components;
 
-use common\components\core\InterfaceSettings;
+
 use common\models\Settings;
 use yii\helpers\ArrayHelper;
 
@@ -11,7 +11,7 @@ use yii\helpers\ArrayHelper;
  * Get access to data (array), it is possible using  Yii::$app->settings;
  * Update Cache,  it is needed use key  from   Yii::$app->settings->cache
  */
-class DbSettings extends \yii\base\Component implements InterfaceSettings
+class DbSettings extends \yii\base\Component
 {
     public $cache = 'db_settings';
     public $cacheDuration = 60000;
@@ -38,7 +38,6 @@ class DbSettings extends \yii\base\Component implements InterfaceSettings
      public function get($key)
     {
         if (array_key_exists($key, $this->data)){
-
             return $this->data[$key];
         } else {
             return false;
@@ -51,7 +50,6 @@ class DbSettings extends \yii\base\Component implements InterfaceSettings
      */
     public function set($key, $value)
     {
-
         $model = Settings::find()->where(['key' => $key])->One();
         $this->data[$key] = $value;
         $model->value = $value;

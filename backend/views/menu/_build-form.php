@@ -12,7 +12,7 @@ use yii\widgets\ActiveForm;
 <div class="panel">
     <div class="panel-heading new-setting">
         <hr>
-        <h3 class="panel-title"><i class="voyager-plus"></i>Create a New Menu Item</h3>
+        <h3 class="panel-title"><i class="voyager-plus"></i><?= Yii::t('backend', 'Create a New Menu Item') ?></h3>
     </div>
     <div class="panel-body">
         <?php $form = ActiveForm::begin(['method' => 'post', 'action' => 'create-item']); ?>
@@ -33,12 +33,12 @@ use yii\widgets\ActiveForm;
         </div>
         <div class="col-md-6 col-lg-4">
             <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                <label for="Default" class="control-label"><?= Yii::t('backend', 'Font Icon class for the Menu Item') ?> <a
+                <label for="Default" class="control-label"><?= Yii::t('backend', 'Choose Icon Class:') ?> <a
                             href="https://material.io/icons/"
                             target="_blank">Material Icons</a></label>
                 <?= $form->field($model, 'icon_class')
                     ->textInput(['maxlength' => true, 'class' => 'form-control'])
-                    ->label(Yii::t('backend', 'Icon Name') . ' (date_range, code)') ?>
+                    ->label(Yii::t('backend', 'Icon Name') . ' (date_range)') ?>
                 <span class="pmd-textfield-focused"></span>
             </div>
         </div>
@@ -47,8 +47,8 @@ use yii\widgets\ActiveForm;
             <div class="form-group pmd-textfield pmd-textfield-floating-label">
                 <label><?= Yii::t('backend', 'Open In') ?></label>
                 <?= $form->field($model, 'target')->dropDownList([
-                    'self' => 'Current Window',
-                    'new' => 'New Window',
+                    'self' => Yii::t('backend', 'Current window'),
+                    'new' => Yii::t('backend', 'New window'),
                 ],['class' => 'select-simple form-control pmd-select2']);?>
             </div>
         </div>

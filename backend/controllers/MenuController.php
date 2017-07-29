@@ -52,7 +52,7 @@ class MenuController extends Controller
     public function actionBuild($id)
     {
         $model = $this->findModel($id);
-        $menuItem = MenuItem::find()->roots()->orderBy(['order' => 'ASC','parent_id' => 'ASC'])->all();
+        $menuItem = MenuItem::find()->where(['parent_id' => null, 'menu_id' => $id])->orderBy(['order' => 'ASC','parent_id' => 'ASC'])->all();
         return $this->render('build', [
             'model' => $model,
             'menuItem' => $menuItem
@@ -75,7 +75,7 @@ class MenuController extends Controller
      * @param $parentId
      */
     private function orderMenu(array $menuItems, $parentId)
-    {
+    {var_dump("asd");exit;
         foreach ($menuItems as $index => $menuItem) {
             $item = MenuItem::find()->where(['id' => $menuItem->id])->one();
             $item->order = $index + 1;
@@ -93,6 +93,7 @@ class MenuController extends Controller
      */
     public function actionCreateItem($id)
     {
+
         $menu = $this->findModel($id);
         $model = new MenuItem();
         $data = [
@@ -100,7 +101,6 @@ class MenuController extends Controller
             'alert-type' => 'danger',
         ];
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $menu) {
-
             $model->menu_id = $menu->id;
             $model->save();
             $data = [
@@ -111,7 +111,6 @@ class MenuController extends Controller
         \Yii::$app->session->addFlash($data['alert-type'], $data['message']);
         return $this->redirect(Yii::$app->request->referrer);
     }
-
 
     /**
      * @param $id
@@ -126,6 +125,7 @@ class MenuController extends Controller
             'alert-type' => 'danger',
         ];
         if (Yii::$app->request->isPost && $model && $model->delete()) {
+
             $data = [
                 'message'    => \Yii::t('backend', "Success"),
                 'alert-type' => 'success',

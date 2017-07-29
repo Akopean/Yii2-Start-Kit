@@ -1,5 +1,5 @@
 <?php
-namespace backend\widgets;
+namespace backend\widgets\menu;
 
 use backend\assets\PropellerAsset;
 use Yii;

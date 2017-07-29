@@ -3,7 +3,7 @@
 
 use yii\db\Migration;
 
-class m150725_192740_seed_data extends Migration
+class m150725_192740_seed_user_table extends Migration
 {
     public function safeUp()
     {

@@ -14,7 +14,7 @@ class AppAsset extends AssetBundle
     public $css = [
         'themes/css/propeller-admin.css',
         'themes/css/propeller-theme.css',
-        'css/site.css'
+        'css/site.css',
     ];
     public $js = [
         'themes/js/circles.min.js',
